@@ -12,7 +12,7 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       home: Scaffold(
         body: Center(
-          child: Text('Daniel Alejandro Carrillo - Grupo #3 Tecnicas de calidad \nde software'),
+          child: Text('Daniel Alejandro  - Grupo #3 Tecnicas de calidad \nde software'),
         ),
       ),
     );
