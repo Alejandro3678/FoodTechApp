@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class AppColors {
   //Colores de fondo
   static const Color backgroundColor = Color(0xFFFFFFFF);
-  static const Color buttonBackGroundColor = Color(0xFFFF8B24);
+  static const Color containerBackgroundColor = Color(0xFFFF8B24);
+  static const Color buttonBackgroundColor = Color(0xFFFF8B24);
   static const Color textFieldBackgroundColor = Color(0xFFEEEEEE);
   static const Color cardBackgroundColor = Color(0xFFD9D9D9);
   static const Color appBarBackgroundColor = Color(0xFFFF8B24);
