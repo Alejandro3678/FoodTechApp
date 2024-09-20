@@ -26,3 +26,11 @@ flutter:
     - family: Allerta
       fonts:
         - asset: assets/fonts/Allerta-Regular.ttf
+
+    - family: MoreSugar
+      fonts:
+        - asset: assets/fonts/MoreSugar-Regular.ttf
+
+  assets:
+    - assets/img/logo_rico_app.png
+    - assets/img/icono_rico_app.png

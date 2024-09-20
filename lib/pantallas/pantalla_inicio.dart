@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:food_tech_app/pantallas/pantala_inicio_sesion.dart';
-import 'package:food_tech_app/utils/colors.dart';
 
 class PantallaInicio extends StatefulWidget {
   const PantallaInicio({super.key});
@@ -12,7 +11,8 @@ class PantallaInicio extends StatefulWidget {
 }
 
 class _PantallaInicioState extends State<PantallaInicio> {
-  final String titulo = "RicoApp";
+  //Variable que almacena la ruta de la imagen
+  final String rutaImagen = "assets/img/logo_rico_app.png";
 
   @override
   void initState() {
@@ -27,34 +27,17 @@ class _PantallaInicioState extends State<PantallaInicio> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: contenedorInicio(titulo),
-    );
+    return contenedorInicio(rutaImagen);
   }
 }
 
-//Construyendo contenedor con texto
-Widget contenedorInicio(String titulo) {
-  return Container(
-    width: 150,
-    height: 150,
-    decoration: const BoxDecoration(
-      borderRadius: BorderRadius.all(Radius.circular(15)),
-      color: AppColors.containerBackgroundColor,
-    ),
-    child: Padding(
-      padding: const EdgeInsets.all(15),
-      child: Center(
-        child: Text(
-          titulo,
-          style: const TextStyle(
-            color: AppColors.secondTextColor,
-            fontFamily: "Actor",
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+//Funcion que retorna una imagen centrada en la pantalla
+Widget contenedorInicio(String rutaImagen) {
+  return Center(
+    child: SizedBox(
+      width: 150,
+      height: 150,
+      child: Image.asset(rutaImagen),
     ),
   );
 }
