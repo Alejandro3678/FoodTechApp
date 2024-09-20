@@ -23,6 +23,7 @@ class AppColors {
   //Colores de bordes
   static const Color primaryBorderColor = Color(0xFFFF8B24);
   static const Color secondBorderColor = Color(0xFF807C7C);
+  static const Color lineBorderColor = Color(0xFFEEEEEE);
 
   //Colores de iconos
   static const Color primaryIconColor = Color(0xFF000000);
