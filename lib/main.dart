@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_tech_app/pantallas/pantalla_inicio.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,10 +11,9 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text(' - Grupo #3 Tecnicas de calidad \nde software'),
-        ),
+      debugShowCheckedModeBanner: false,
+     home: Scaffold(
+        body: PantallaInicio(),
       ),
     );
   }
