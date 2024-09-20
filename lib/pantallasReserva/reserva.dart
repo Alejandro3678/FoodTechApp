@@ -155,32 +155,48 @@ class _ReservationScreenState extends State<ReservationScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 3,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag),
-            label: "Pedidos",
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Color(0xFFFF8B24),
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                color: Color(0xFF000000),
+                blurRadius: 10,
+                offset: Offset(0, 5),
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.local_offer),
-            label: "Ofertas",
+          child: BottomNavigationBar(
+            currentIndex: 3,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_bag),
+                label: "Pedidos",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.local_offer),
+                label: "Ofertas",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.menu_book),
+                label: "Menú",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.calendar_today),
+                label: "Reservas",
+              ),
+            ],
+            selectedItemColor: Color(0xFFFFFFFF),
+            unselectedItemColor: Color(0xFF000000),
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            iconSize: 30,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu_book),
-            label: "Menú",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            label: "Reservas",
-          ),
-        ],
-        selectedItemColor: Color(0xFFFF8B24),
-        unselectedItemColor: Color(0xFF807C7C),
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        elevation: 5,
-        iconSize: 30,
+        ),
       ),
     );
   }
@@ -190,7 +206,12 @@ class _ReservationScreenState extends State<ReservationScreen> {
       controller: controller,
       decoration: InputDecoration(
         labelText: label,
-        border: OutlineInputBorder(),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Color(0xFFFF8B24)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Color(0xFFFF8B24), width: 2.0),
+        ),
       ),
     );
   }
@@ -202,7 +223,12 @@ class _ReservationScreenState extends State<ReservationScreen> {
       maxLines: 3,
       decoration: InputDecoration(
         hintText: hintText,
-        border: OutlineInputBorder(),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Color(0xFFFF8B24)),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Color(0xFFFF8B24), width: 2.0),
+        ),
       ),
     );
   }
