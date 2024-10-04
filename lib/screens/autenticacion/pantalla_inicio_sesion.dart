@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_tech_app/screens/principal/pantalla_principal.dart';
-import 'package:food_tech_app/screens/autenticacion/pantalla_registro.dart';
 import 'package:food_tech_app/utils/colors.dart';
 import 'package:food_tech_app/widgets/componentes/custom_text_field.dart';
 import 'package:food_tech_app/widgets/componentes/custom_text_label.dart';
@@ -103,11 +101,7 @@ class EnlaceRegistrarse extends StatelessWidget {
           const SizedBox(width: 10),
           InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const PantallaRegistro()),
-              );
+              Navigator.pushNamed(context, "/registro");
             },
             child: Text(
               textoRegistro,
@@ -142,11 +136,7 @@ class BotonIniciarSesion extends StatelessWidget {
         width: double.infinity,
         child: ElevatedButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const PantallaPrincipal()),
-            );
+            Navigator.pushReplacementNamed(context, "/principal");
           },
           style: const ButtonStyle(
             backgroundColor:

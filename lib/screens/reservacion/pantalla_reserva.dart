@@ -43,7 +43,8 @@ class _ReservationScreenState extends State<ReservationScreen> {
     if (!RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
         .hasMatch(email)) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Introduce una dirección de correo válida")),
+        const SnackBar(
+            content: Text("Introduce una dirección de correo válida")),
       );
       return;
     }
@@ -65,6 +66,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF6F6F6),
+      /*
       appBar: AppBar(
         title: const Text(
           "Nombre App",
@@ -83,6 +85,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
           onPressed: () {},
         ),
       ),
+      */
       drawer: const Drawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -139,8 +142,8 @@ class _ReservationScreenState extends State<ReservationScreen> {
                   onPressed: _submitForm,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFFF8B24),
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 50.0, vertical: 15.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50.0, vertical: 15.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),

@@ -145,7 +145,7 @@ class SeccionTitulos extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Navigator.pop(context);
+                Navigator.pushReplacementNamed(context, "/inicioSesion");
               },
               child: Text(
                 textoInicioSesion,
