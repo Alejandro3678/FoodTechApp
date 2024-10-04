@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_tech_app/screens/menu/seccion_cuerpo_menu.dart';
-import 'package:food_tech_app/widgets/componentes/custom_appbar.dart';
-import 'package:food_tech_app/widgets/componentes/custom_bottom_navigation_bar.dart';
+//import 'package:food_tech_app/widgets/componentes/custom_appbar.dart';
 
 //Pantalla Menu.
 class PantallaMenuDia extends StatelessWidget {
@@ -14,9 +13,8 @@ class PantallaMenuDia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: BarraNavegacionSuperior(),
+      //appBar: BarraNavegacionSuperior(),
       body: SeccionCuerpoMenu(),
-      bottomNavigationBar: BarraNavegacionInferior(),
     );
   }
 }
