@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Reservaciones',
       theme: ThemeData(
-        primaryColor: Color(0xFFFF8B24),
+        primaryColor: const Color(0xFFFF8B24),
       ),
-      home: ReservationScreen(),
+      home: const ReservationScreen(),
     );
   }
 }
 
 class ReservationScreen extends StatefulWidget {
+  const ReservationScreen({super.key});
+
   @override
   _ReservationScreenState createState() => _ReservationScreenState();
 }
@@ -79,12 +83,12 @@ class _ReservationScreenState extends State<ReservationScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Hora inválida"),
-          content: Text(
+          title: const Text("Hora inválida"),
+          content: const Text(
               "No puedes seleccionar una hora antes de las 3:00 PM para hoy."),
           actions: <Widget>[
             TextButton(
-              child: Text("Aceptar"),
+              child: const Text("Aceptar"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -105,11 +109,11 @@ class _ReservationScreenState extends State<ReservationScreen> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: isAvailable
-              ? Text("Disponibilidad")
-              : Text("No hay disponibilidad"),
+              ? const Text("Disponibilidad")
+              : const Text("No hay disponibilidad"),
           content: isAvailable
-              ? Text("¡Hay disponibilidad en el horario seleccionado!")
-              : Column(
+              ? const Text("¡Hay disponibilidad en el horario seleccionado!")
+              : const Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Icon(Icons.warning, color: Colors.red, size: 50),
@@ -121,7 +125,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
                 ),
           actions: <Widget>[
             TextButton(
-              child: Text("Aceptar"),
+              child: const Text("Aceptar"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -136,7 +140,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Nombre App",
           style: TextStyle(
             color: Color(0xFFFFFFFF),
@@ -146,13 +150,13 @@ class _ReservationScreenState extends State<ReservationScreen> {
         centerTitle: true,
         actions: [
           IconButton(
-            icon: Icon(Icons.shopping_cart),
+            icon: const Icon(Icons.shopping_cart),
             onPressed: () {},
           ),
         ],
-        backgroundColor: Color(0xFFFF8B24),
+        backgroundColor: const Color(0xFFFF8B24),
         leading: IconButton(
-          icon: Icon(Icons.menu),
+          icon: const Icon(Icons.menu),
           onPressed: () {},
         ),
       ),
@@ -162,30 +166,30 @@ class _ReservationScreenState extends State<ReservationScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'RESERVACIONES',
                 style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFFFF8B24)),
               ),
-              SizedBox(height: 8),
-              Text(
+              const SizedBox(height: 8),
+              const Text(
                 'Revisar disponibilidad aquí',
                 style: TextStyle(fontSize: 18),
               ),
-              SizedBox(height: 16),
-              Text('Elige el restaurante de tu preferencia:'),
+              const SizedBox(height: 16),
+              const Text('Elige el restaurante de tu preferencia:'),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xFFFF8B24)),
+                  border: Border.all(color: const Color(0xFFFF8B24)),
                 ),
                 child: DropdownButton<String>(
                   value: selectedRestaurant,
                   isExpanded: true,
-                  hint: Text('Selecciona un restaurante'),
-                  underline: SizedBox(),
+                  hint: const Text('Selecciona un restaurante'),
+                  underline: const SizedBox(),
                   onChanged: (String? newValue) {
                     setState(() {
                       selectedRestaurant = newValue;
@@ -200,17 +204,17 @@ class _ReservationScreenState extends State<ReservationScreen> {
                   }).toList(),
                 ),
               ),
-              SizedBox(height: 16),
-              Text('Número de invitados:'),
+              const SizedBox(height: 16),
+              const Text('Número de invitados:'),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xFFFF8B24)),
+                  border: Border.all(color: const Color(0xFFFF8B24)),
                 ),
                 child: DropdownButton<int>(
                   value: selectedGuests,
                   isExpanded: true,
-                  underline: SizedBox(),
+                  underline: const SizedBox(),
                   onChanged: (int? newValue) {
                     setState(() {
                       selectedGuests = newValue!;
@@ -225,16 +229,16 @@ class _ReservationScreenState extends State<ReservationScreen> {
                   }).toList(),
                 ),
               ),
-              SizedBox(height: 16),
-              Text('Fecha:'),
+              const SizedBox(height: 16),
+              const Text('Fecha:'),
               Row(
                 children: [
                   Expanded(
                     child: Container(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                          const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFFF8B24)),
+                        border: Border.all(color: const Color(0xFFFF8B24)),
                       ),
                       child: Text(
                         "${selectedDate.toLocal()}".split(' ')[0],
@@ -242,48 +246,48 @@ class _ReservationScreenState extends State<ReservationScreen> {
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.calendar_today),
+                    icon: const Icon(Icons.calendar_today),
                     onPressed: () => _selectDate(context),
                   ),
                 ],
               ),
-              SizedBox(height: 16),
-              Text('Hora:'),
+              const SizedBox(height: 16),
+              const Text('Hora:'),
               Row(
                 children: [
                   Expanded(
                     child: Container(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                          const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFFFF8B24)),
+                        border: Border.all(color: const Color(0xFFFF8B24)),
                       ),
                       child: Text(
-                        "${selectedTime.format(context)}",
+                        selectedTime.format(context),
                       ),
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.access_time),
+                    icon: const Icon(Icons.access_time),
                     onPressed: () => _selectTime(context),
                   ),
                 ],
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Center(
                 child: ElevatedButton(
                   onPressed: _checkAvailability,
-                  child: Text(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                    backgroundColor: const Color(0xFFFF8B24),
+                  ),
+                  child: const Text(
                     "Buscar",
                     style: TextStyle(
                       fontSize: 18,
                       color: Color(0xFFFFFFFF),
                       fontWeight: FontWeight.bold,
                     ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                    backgroundColor: Color(0xFFFF8B24),
                   ),
                 ),
               ),
@@ -295,9 +299,9 @@ class _ReservationScreenState extends State<ReservationScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Container(
           decoration: BoxDecoration(
-            color: Color(0xFFFF8B24),
+            color: const Color(0xFFFF8B24),
             borderRadius: BorderRadius.circular(16),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Color(0xFF000000),
                 blurRadius: 10,
@@ -307,7 +311,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
           ),
           child: BottomNavigationBar(
             currentIndex: 2,
-            items: [
+            items: const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.local_offer),
                 label: "Ofertas",
@@ -325,8 +329,8 @@ class _ReservationScreenState extends State<ReservationScreen> {
                 label: 'Perfil',
               ),
             ],
-            selectedItemColor: Color(0xFFFFFFFF),
-            unselectedItemColor: Color(0xFF000000),
+            selectedItemColor: const Color(0xFFFFFFFF),
+            unselectedItemColor: const Color(0xFF000000),
             type: BottomNavigationBarType.fixed,
             backgroundColor: Colors.transparent,
             elevation: 0,

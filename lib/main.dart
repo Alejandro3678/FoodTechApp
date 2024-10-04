@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_tech_app/pantallas/pantalla_inicio.dart';
+import 'package:food_tech_app/screens/intro/pantalla_inicio.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,7 +12,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-     home: Scaffold(
+      home: Scaffold(
         body: PantallaInicio(),
       ),
     );

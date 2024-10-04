@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,12 +14,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: DetalleProductoCantidadScreen(),
+      home: const DetalleProductoCantidadScreen(),
     );
   }
 }
 
 class DetalleProductoCantidadScreen extends StatefulWidget {
+  const DetalleProductoCantidadScreen({super.key});
+
   @override
   _DetalleProductoCantidadScreenState createState() =>
       _DetalleProductoCantidadScreenState();
@@ -53,16 +57,16 @@ class _DetalleProductoCantidadScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('FoodTech App'),
+        title: const Text('FoodTech App'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.shopping_cart),
+            icon: const Icon(Icons.shopping_cart),
             onPressed: () {
               // Implement navigation to cart
             },
@@ -82,10 +86,10 @@ class _DetalleProductoCantidadScreenState
                 fit: BoxFit.cover,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(
               child: Container(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
                   color: Colors.grey[200],
                   borderRadius: BorderRadius.circular(10),
@@ -93,37 +97,37 @@ class _DetalleProductoCantidadScreenState
                 ),
                 child: Column(
                   children: [
-                    Text(
+                    const Text(
                       'Nombre producto: Entrada',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'Cantidad:',
                           style: TextStyle(fontSize: 16),
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         IconButton(
-                          icon: Icon(Icons.remove),
+                          icon: const Icon(Icons.remove),
                           onPressed: _decrementCantidad,
                         ),
                         Text(
                           '$_cantidad',
-                          style: TextStyle(fontSize: 18),
+                          style: const TextStyle(fontSize: 18),
                         ),
                         IconButton(
-                          icon: Icon(Icons.add),
+                          icon: const Icon(Icons.add),
                           onPressed: _incrementCantidad,
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -131,10 +135,10 @@ class _DetalleProductoCantidadScreenState
                           onPressed: _cancelar,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.grey, // Updated property
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 30, vertical: 15),
                           ),
-                          child: Text(
+                          child: const Text(
                             'Cancelar',
                             style: TextStyle(fontSize: 16),
                           ),
@@ -143,10 +147,10 @@ class _DetalleProductoCantidadScreenState
                           onPressed: _anadirAlCarrito,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.orange, // Updated property
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 30, vertical: 15),
                           ),
-                          child: Text(
+                          child: const Text(
                             'Añadir',
                             style: TextStyle(fontSize: 16, color: Colors.white),
                           ),
@@ -157,7 +161,7 @@ class _DetalleProductoCantidadScreenState
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(
               child: Image.asset(
                 'assets/img/producto1.png',

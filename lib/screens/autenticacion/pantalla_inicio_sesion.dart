@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_tech_app/pantallas/pantalla_principal.dart';
-import 'package:food_tech_app/pantallas/pantalla_registro.dart';
+import 'package:food_tech_app/screens/principal/pantalla_principal.dart';
+import 'package:food_tech_app/screens/autenticacion/pantalla_registro.dart';
 import 'package:food_tech_app/utils/colors.dart';
-import 'package:food_tech_app/widgets/componentes/caja_texto_base.dart';
-import 'package:food_tech_app/widgets/componentes/etiqueta_texto_base.dart';
+import 'package:food_tech_app/widgets/componentes/custom_text_field.dart';
+import 'package:food_tech_app/widgets/componentes/custom_text_label.dart';
 
 class PantallaInicioSesion extends StatelessWidget {
   const PantallaInicioSesion({super.key});
@@ -13,6 +13,7 @@ class PantallaInicioSesion extends StatelessWidget {
     return const Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: Padding(
             padding: EdgeInsets.all(10.0),
             child: Column(
@@ -258,10 +259,11 @@ class SeccionLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: SizedBox(
-      width: 100,
-      height: 100,
-      child: Image.asset(rutaImagen),
-    ));
+      child: SizedBox(
+        width: 100,
+        height: 100,
+        child: Image.asset(rutaImagen),
+      ),
+    );
   }
 }

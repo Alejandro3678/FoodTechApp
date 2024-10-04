@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_tech_app/utils/colors.dart';
-import 'package:food_tech_app/widgets/componentes/caja_texto_base.dart';
-import 'package:food_tech_app/widgets/componentes/etiqueta_texto_base.dart';
+import 'package:food_tech_app/widgets/componentes/custom_text_field.dart';
+import 'package:food_tech_app/widgets/componentes/custom_text_label.dart';
 
 class PantallaRegistro extends StatelessWidget {
   const PantallaRegistro({super.key});

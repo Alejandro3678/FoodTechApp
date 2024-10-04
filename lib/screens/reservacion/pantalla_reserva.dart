@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: ReservationScreen(),
     );
@@ -13,6 +15,8 @@ class MyApp extends StatelessWidget {
 }
 
 class ReservationScreen extends StatefulWidget {
+  const ReservationScreen({super.key});
+
   @override
   _ReservationScreenState createState() => _ReservationScreenState();
 }
@@ -31,7 +35,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
         email.isEmpty ||
         _phoneController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("¡POR FAVOR! Completar todos los campos")),
+        const SnackBar(content: Text("¡POR FAVOR! Completar todos los campos")),
       );
       return;
     }
@@ -39,13 +43,13 @@ class _ReservationScreenState extends State<ReservationScreen> {
     if (!RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
         .hasMatch(email)) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Introduce una dirección de correo válida")),
+        const SnackBar(content: Text("Introduce una dirección de correo válida")),
       );
       return;
     }
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("¡RESERVA REALIZADA CON EXITO!")),
+      const SnackBar(content: Text("¡RESERVA REALIZADA CON EXITO!")),
     );
     _nameController.clear();
     _emailController.clear();
@@ -60,9 +64,9 @@ class _ReservationScreenState extends State<ReservationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF6F6F6),
+      backgroundColor: const Color(0xFFF6F6F6),
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Nombre App",
           style: TextStyle(
             color: Color(0xFFFFFFFF),
@@ -71,22 +75,22 @@ class _ReservationScreenState extends State<ReservationScreen> {
         ),
         centerTitle: true,
         actions: [
-          IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {}),
+          IconButton(icon: const Icon(Icons.shopping_cart), onPressed: () {}),
         ],
-        backgroundColor: Color(0xFFFF8B24),
+        backgroundColor: const Color(0xFFFF8B24),
         leading: IconButton(
-          icon: Icon(Icons.menu),
+          icon: const Icon(Icons.menu),
           onPressed: () {},
         ),
       ),
-      drawer: Drawer(),
+      drawer: const Drawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Center(
+              const Center(
                 child: Text(
                   "HAZ TU RESERVA AQUÍ",
                   style: TextStyle(
@@ -96,21 +100,21 @@ class _ReservationScreenState extends State<ReservationScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               _buildTextField("NOMBRE", _nameController),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               _buildTextField("CORREO", _emailController),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               _buildTextField("TELÉFONO", _phoneController),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               _buildSectionTitle("SOLICITUDES ESPECIALES:"),
               _buildMultiLineTextField(_specialRequestsController,
                   "Ej: ¿Sería posible que nos asignen una mesa en una zona más tranquila del restaurante?."),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               _buildSectionTitle("COMENTARIOS:"),
               _buildMultiLineTextField(
                   _commentsController, "Ej: Excelente restaurante..."),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 children: <Widget>[
                   Checkbox(
@@ -129,24 +133,24 @@ class _ReservationScreenState extends State<ReservationScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Center(
                 child: ElevatedButton(
                   onPressed: _submitForm,
-                  child: Text(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFFF8B24),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 50.0, vertical: 15.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                  child: const Text(
                     "Reservar",
                     style: TextStyle(
                       fontSize: 18,
                       color: Color(0xFFFFFFFF),
                       fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFFFF8B24),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 50.0, vertical: 15.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
                     ),
                   ),
                 ),
@@ -159,9 +163,9 @@ class _ReservationScreenState extends State<ReservationScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Container(
           decoration: BoxDecoration(
-            color: Color(0xFFFF8B24),
+            color: const Color(0xFFFF8B24),
             borderRadius: BorderRadius.circular(16),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Color(0xFF000000),
                 blurRadius: 10,
@@ -171,7 +175,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
           ),
           child: BottomNavigationBar(
             currentIndex: 3,
-            items: [
+            items: const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.shopping_bag),
                 label: "Pedidos",
@@ -189,8 +193,8 @@ class _ReservationScreenState extends State<ReservationScreen> {
                 label: "Reservas",
               ),
             ],
-            selectedItemColor: Color(0xFFFFFFFF),
-            unselectedItemColor: Color(0xFF000000),
+            selectedItemColor: const Color(0xFFFFFFFF),
+            unselectedItemColor: const Color(0xFF000000),
             type: BottomNavigationBarType.fixed,
             backgroundColor: Colors.transparent,
             elevation: 0,
@@ -206,10 +210,10 @@ class _ReservationScreenState extends State<ReservationScreen> {
       controller: controller,
       decoration: InputDecoration(
         labelText: label,
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Color(0xFFFF8B24)),
         ),
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Color(0xFFFF8B24), width: 2.0),
         ),
       ),
@@ -223,10 +227,10 @@ class _ReservationScreenState extends State<ReservationScreen> {
       maxLines: 3,
       decoration: InputDecoration(
         hintText: hintText,
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Color(0xFFFF8B24)),
         ),
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Color(0xFFFF8B24), width: 2.0),
         ),
       ),
@@ -236,7 +240,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
   Widget _buildSectionTitle(String title) {
     return Text(
       title,
-      style: TextStyle(
+      style: const TextStyle(
         fontWeight: FontWeight.bold,
         color: Color(0xFF333333),
       ),

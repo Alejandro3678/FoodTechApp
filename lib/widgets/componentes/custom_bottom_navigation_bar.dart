@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:food_tech_app/pantallas/pantalla_principal.dart';
+import 'package:food_tech_app/screens/categoria/pantalla_cantidad_producto.dart';
+import 'package:food_tech_app/screens/categoria/pantalla_categoria.dart';
+import 'package:food_tech_app/screens/categoria/pantalla_producto.dart';
+import 'package:food_tech_app/screens/menu/pantalla_menu_dia.dart';
+import 'package:food_tech_app/screens/perfil/pantalla_perfil.dart';
+import 'package:food_tech_app/screens/principal/pantalla_principal.dart';
+import 'package:food_tech_app/screens/reservacion/pantalla_disponibilidad.dart';
 import 'package:food_tech_app/utils/colors.dart';
 
 class BarraNavegacionInferior extends StatefulWidget {
@@ -18,8 +24,12 @@ class _BarraNavegacionInferiorState extends State<BarraNavegacionInferior> {
   //con los items del Bottom Navigator Bar
   final List<Widget> pantallas = [
     const PantallaPrincipal(),
-    //AQUI AGREGUEN SUS PANTALLAS DE ESTA FORMA:
-    //const nombrePantalla(),
+    const CategoriesPage(),
+    const ProductPage(),
+    const DetalleProductoCantidadScreen(),
+    const PantallaMenuDia(),
+    const ReservationScreen(),
+    const PantallaPerfil(),
   ];
 
   @override
@@ -28,7 +38,7 @@ class _BarraNavegacionInferiorState extends State<BarraNavegacionInferior> {
       padding: const EdgeInsets.only(
           bottom: 20.0, left: 10.0, right: 10.0, top: 10.0),
       child: Container(
-        height: 90,
+        height: 80,
         decoration: BoxDecoration(
           color: AppColors.containerBackgroundColor,
           borderRadius: BorderRadius.circular(15.0),
@@ -43,7 +53,7 @@ class _BarraNavegacionInferiorState extends State<BarraNavegacionInferior> {
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               itemMenu(Icons.home, "Inicio", 0),
               itemMenu(Icons.assignment, "Categorias", 1),
