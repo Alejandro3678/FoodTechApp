@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:food_tech_app/pantallas/pantala_inicio_sesion.dart';
+import 'package:food_tech_app/screens/autenticacion/pantalla_inicio_sesion.dart';
 
 class PantallaInicio extends StatefulWidget {
   const PantallaInicio({super.key});
@@ -17,27 +17,23 @@ class _PantallaInicioState extends State<PantallaInicio> {
   @override
   void initState() {
     super.initState();
-    //Navega a la proxima pantalla despues de 5 segundos
-    Timer(const Duration(seconds: 5), () {
+    //Navega a la proxima pantalla despues de 3 segundos
+    Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const PantallaInicioSesion()),
       );
     });
   }
 
+  //Construimos el logo centrado en la pantalla
   @override
   Widget build(BuildContext context) {
-    return contenedorInicio(rutaImagen);
+    return Center(
+      child: SizedBox(
+        width: 150,
+        height: 150,
+        child: Image.asset(rutaImagen),
+      ),
+    );
   }
-}
-
-//Funcion que retorna una imagen centrada en la pantalla
-Widget contenedorInicio(String rutaImagen) {
-  return Center(
-    child: SizedBox(
-      width: 150,
-      height: 150,
-      child: Image.asset(rutaImagen),
-    ),
-  );
 }

@@ -9,6 +9,7 @@ class AppColors {
   static const Color cardBackgroundColor = Color(0xFFD9D9D9);
   static const Color appBarBackgroundColor = Color(0xFFFF8B24);
   static const Color bottomNavigationBarColor = Color(0xFFFF8B24);
+  static const Color containerSecondBackgroundColor = Color(0xFF686D76);
 
   //Colores de texto
   static const Color primaryTextColor = Color(0xFF000000);
