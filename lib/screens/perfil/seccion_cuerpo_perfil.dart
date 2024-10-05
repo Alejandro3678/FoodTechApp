@@ -243,6 +243,27 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                       thickness: 1.0,
                       height: 5.0,
                     ),
+                    const SizedBox(height: 25.0),
+                    Center(
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: const ButtonStyle(
+                          backgroundColor: WidgetStatePropertyAll(
+                            AppColors.buttonBackgroundColor,
+                          ),
+                          elevation: WidgetStatePropertyAll(10),
+                        ),
+                        child: const Text(
+                          "GUARDAR",
+                          style: TextStyle(
+                            color: AppColors.buttonTextColor,
+                            fontFamily: "Actor",
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
