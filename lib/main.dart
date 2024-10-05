@@ -6,6 +6,7 @@ import 'package:food_tech_app/screens/menu/pantalla_menu_dia.dart';
 import 'package:food_tech_app/screens/perfil/pantalla_perfil.dart';
 import 'package:food_tech_app/screens/principal/pantalla.dart';
 import 'package:food_tech_app/screens/reservacion/pantalla_disponibilidad.dart';
+import 'package:food_tech_app/screens/reservacion/pantalla_reserva.dart';
 
 void main() {
   runApp(RicoApp());
@@ -21,6 +22,7 @@ class RicoApp extends StatelessWidget {
     "/ofertas": (context) => const PantallaInicio(),
     "/perfil": (context) => const PantallaPerfil(),
     "/menu": (context) => const PantallaMenuDia(),
+    "/disponibilidad": (context) => const PantallaDisponibilidad(),
     "/reserva": (context) => const ReservationScreen(),
     "/principal": (context) => const MainApp(),
   };

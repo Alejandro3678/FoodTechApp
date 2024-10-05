@@ -1,19 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ReservationScreen(),
-    );
-  }
-}
-
 class ReservationScreen extends StatefulWidget {
   const ReservationScreen({super.key});
 
@@ -66,26 +52,6 @@ class _ReservationScreenState extends State<ReservationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF6F6F6),
-      /*
-      appBar: AppBar(
-        title: const Text(
-          "Nombre App",
-          style: TextStyle(
-            color: Color(0xFFFFFFFF),
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(icon: const Icon(Icons.shopping_cart), onPressed: () {}),
-        ],
-        backgroundColor: const Color(0xFFFF8B24),
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {},
-        ),
-      ),
-      */
       drawer: const Drawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -159,49 +125,6 @@ class _ReservationScreenState extends State<ReservationScreen> {
                 ),
               ),
             ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Container(
-          decoration: BoxDecoration(
-            color: const Color(0xFFFF8B24),
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: const [
-              BoxShadow(
-                color: Color(0xFF000000),
-                blurRadius: 10,
-                offset: Offset(0, 5),
-              ),
-            ],
-          ),
-          child: BottomNavigationBar(
-            currentIndex: 3,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_bag),
-                label: "Pedidos",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.local_offer),
-                label: "Ofertas",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.menu_book),
-                label: "Menú",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_today),
-                label: "Reservas",
-              ),
-            ],
-            selectedItemColor: const Color(0xFFFFFFFF),
-            unselectedItemColor: const Color(0xFF000000),
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            iconSize: 30,
           ),
         ),
       ),

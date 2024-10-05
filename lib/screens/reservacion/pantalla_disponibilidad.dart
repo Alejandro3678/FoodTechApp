@@ -1,32 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:food_tech_app/utils/colors.dart';
+import 'package:food_tech_app/widgets/componentes/custom_seccion_encabezado.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class PantallaDisponibilidad extends StatefulWidget {
+  const PantallaDisponibilidad({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Reservaciones',
-      theme: ThemeData(
-        primaryColor: const Color(0xFFFF8B24),
-      ),
-      home: const ReservationScreen(),
-    );
-  }
+  _PantallaDisponibilidadState createState() => _PantallaDisponibilidadState();
 }
 
-class ReservationScreen extends StatefulWidget {
-  const ReservationScreen({super.key});
-
-  @override
-  _ReservationScreenState createState() => _ReservationScreenState();
-}
-
-class _ReservationScreenState extends State<ReservationScreen> {
+class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
   String? selectedRestaurant;
   int selectedGuests = 1;
   DateTime selectedDate = DateTime.now();
@@ -101,9 +84,10 @@ class _ReservationScreenState extends State<ReservationScreen> {
 
   void _checkAvailability() {
     setState(() {
-      isAvailable = selectedGuests % 2 == 0;
+      //isAvailable = selectedGuests % 2 == 0;
     });
-
+    Navigator.pushNamed(context, "/reserva");
+    /*
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -134,61 +118,65 @@ class _ReservationScreenState extends State<ReservationScreen> {
         );
       },
     );
+    */
   }
+
+  final String titulo = "RESERVACIONES";
+  final String logo = "assets/img/logo_reservacion.png";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Nombre App",
-          style: TextStyle(
-            color: Color(0xFFFFFFFF),
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.shopping_cart),
-            onPressed: () {},
-          ),
-        ],
-        backgroundColor: const Color(0xFFFF8B24),
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {},
-        ),
-      ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.only(
+            top: 10.0,
+            bottom: 10.0,
+            left: 20.0,
+            right: 20.0,
+          ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text(
-                'RESERVACIONES',
-                style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFFFF8B24)),
+              SeccionEncabezado(
+                tituloPantalla: titulo,
+                rutaLogo: logo,
               ),
               const SizedBox(height: 8),
               const Text(
                 'Revisar disponibilidad aquí',
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(
+                  fontSize: 22.0,
+                  fontFamily: "Allerta",
+                  color: AppColors.titleTextColor,
+                ),
               ),
               const SizedBox(height: 16),
-              const Text('Elige el restaurante de tu preferencia:'),
+              const Text(
+                'Elige el restaurante de tu preferencia:',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontFamily: "Actor",
+                  color: AppColors.primaryTextColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                  border: Border.all(color: const Color(0xFFFF8B24)),
+                  border: Border.all(color: AppColors.primaryBorderColor),
                 ),
                 child: DropdownButton<String>(
                   value: selectedRestaurant,
                   isExpanded: true,
-                  hint: const Text('Selecciona un restaurante'),
+                  hint: const Text(
+                    'Selecciona un restaurante',
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      fontFamily: "Actor",
+                      color: AppColors.subTitleTextColor,
+                    ),
+                  ),
                   underline: const SizedBox(),
                   onChanged: (String? newValue) {
                     setState(() {
@@ -199,13 +187,28 @@ class _ReservationScreenState extends State<ReservationScreen> {
                       restaurants.map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
-                      child: Text(value),
+                      child: Text(
+                        value,
+                        style: const TextStyle(
+                          fontSize: 15.0,
+                          fontFamily: "Actor",
+                          color: AppColors.primaryTextColor,
+                        ),
+                      ),
                     );
                   }).toList(),
                 ),
               ),
               const SizedBox(height: 16),
-              const Text('Número de invitados:'),
+              const Text(
+                'Número de invitados:',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontFamily: "Actor",
+                  color: AppColors.primaryTextColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
@@ -224,24 +227,44 @@ class _ReservationScreenState extends State<ReservationScreen> {
                       .map<DropdownMenuItem<int>>((int value) {
                     return DropdownMenuItem<int>(
                       value: value,
-                      child: Text(value.toString()),
+                      child: Text(
+                        value.toString(),
+                        style: const TextStyle(
+                          fontSize: 18.0,
+                          fontFamily: "Actor",
+                          color: AppColors.subTitleTextColor,
+                        ),
+                      ),
                     );
                   }).toList(),
                 ),
               ),
               const SizedBox(height: 16),
-              const Text('Fecha:'),
+              const Text(
+                'Fecha:',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontFamily: "Actor",
+                  color: AppColors.primaryTextColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               Row(
                 children: [
                   Expanded(
                     child: Container(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 15),
                       decoration: BoxDecoration(
                         border: Border.all(color: const Color(0xFFFF8B24)),
                       ),
                       child: Text(
                         "${selectedDate.toLocal()}".split(' ')[0],
+                        style: const TextStyle(
+                          fontSize: 16.0,
+                          fontFamily: "Actor",
+                          color: AppColors.subTitleTextColor,
+                        ),
                       ),
                     ),
                   ),
@@ -252,18 +275,31 @@ class _ReservationScreenState extends State<ReservationScreen> {
                 ],
               ),
               const SizedBox(height: 16),
-              const Text('Hora:'),
+              const Text(
+                'Hora:',
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontFamily: "Actor",
+                  color: AppColors.primaryTextColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               Row(
                 children: [
                   Expanded(
                     child: Container(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 15),
                       decoration: BoxDecoration(
                         border: Border.all(color: const Color(0xFFFF8B24)),
                       ),
                       child: Text(
                         selectedTime.format(context),
+                        style: const TextStyle(
+                          fontSize: 15.0,
+                          fontFamily: "Actor",
+                          color: AppColors.subTitleTextColor,
+                        ),
                       ),
                     ),
                   ),
@@ -277,64 +313,24 @@ class _ReservationScreenState extends State<ReservationScreen> {
               Center(
                 child: ElevatedButton(
                   onPressed: _checkAvailability,
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                    backgroundColor: const Color(0xFFFF8B24),
+                  style: const ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(
+                      AppColors.buttonBackgroundColor,
+                    ),
+                    elevation: WidgetStatePropertyAll(10),
                   ),
                   child: const Text(
-                    "Buscar",
+                    "BUSCAR",
                     style: TextStyle(
-                      fontSize: 18,
-                      color: Color(0xFFFFFFFF),
+                      color: AppColors.buttonTextColor,
+                      fontFamily: "Actor",
+                      fontSize: 20.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
             ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Container(
-          decoration: BoxDecoration(
-            color: const Color(0xFFFF8B24),
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: const [
-              BoxShadow(
-                color: Color(0xFF000000),
-                blurRadius: 10,
-                offset: Offset(0, 5),
-              ),
-            ],
-          ),
-          child: BottomNavigationBar(
-            currentIndex: 2,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.local_offer),
-                label: "Ofertas",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.menu_book),
-                label: "Menú",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_today),
-                label: "Reservas",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: 'Perfil',
-              ),
-            ],
-            selectedItemColor: const Color(0xFFFFFFFF),
-            unselectedItemColor: const Color(0xFF000000),
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            iconSize: 30,
           ),
         ),
       ),

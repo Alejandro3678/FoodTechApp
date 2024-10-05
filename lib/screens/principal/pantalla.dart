@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_tech_app/screens/categoria/pantalla_categoria.dart';
 import 'package:food_tech_app/screens/menu/pantalla_menu_dia.dart';
-import 'package:food_tech_app/screens/perfil/pantalla_perfil.dart';
 import 'package:food_tech_app/screens/ofertas/pantalla_ofertas.dart';
 import 'package:food_tech_app/screens/reservacion/pantalla_disponibilidad.dart';
 import 'package:food_tech_app/utils/colors.dart';
@@ -19,9 +19,9 @@ class _MainAppState extends State<MainApp> {
   // Lista de pantallas
   final List<Widget> listaPantallas = const [
     PantallaOfertas(),
-    PantallaPerfil(),
+    PantallaCategorias(),
     PantallaMenuDia(),
-    ReservationScreen(),
+    PantallaDisponibilidad(),
   ];
 
   void onItemTapped(int index) {
@@ -34,7 +34,7 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BarraNavegacionSuperior(),
+      appBar: const BarraNavegacionSuperior(),
       body:
           //Muestra la pantalla seleccionada
           listaPantallas[itemSeleccionado],
