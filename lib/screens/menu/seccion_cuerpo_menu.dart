@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_tech_app/widgets/componentes/custom_card.dart';
-import 'package:food_tech_app/widgets/componentes/custom_seccion_encabezado.dart';
+import 'package:food_tech_app/widgets/custom_card.dart';
+import 'package:food_tech_app/widgets/custom_seccion_encabezado.dart';
 
 //Clase donde construimos la seccion del cuerpo de la pantalla menú.
 class SeccionCuerpoMenu extends StatelessWidget {

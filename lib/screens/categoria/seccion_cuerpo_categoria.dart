@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:food_tech_app/utils/colors.dart";
-import "package:food_tech_app/widgets/componentes/custom_seccion_encabezado.dart";
+import "package:food_tech_app/widgets/custom_seccion_encabezado.dart";
 
 class SeccionCuerpoCategoria extends StatelessWidget {
   final String titulo = "CATEGORIAS";
@@ -98,46 +98,37 @@ class SeccionCuerpoCategoria extends StatelessWidget {
 
   Widget tarjetaCategoria(
       String nombreCategoria, String imagenCategoria, VoidCallback onTap) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15.0),
-        border: Border.all(
-          width: 3.0,
-          color: AppColors.primaryBorderColor,
-        ),
-      ),
-      child: InkWell(
-        onTap: onTap,
-        child: Card(
-          elevation: 4.0,
-          child: Column(
-            children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(15.0),
-                  topRight: Radius.circular(15.0),
-                ),
-                child: Image.network(
-                  imagenCategoria,
-                  width: double.infinity,
-                  height: 100.0,
-                  fit: BoxFit.cover,
-                ),
+    return InkWell(
+      onTap: onTap,
+      child: Card(
+        elevation: 4.0,
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(15.0),
+                topRight: Radius.circular(15.0),
               ),
-              const SizedBox(
-                height: 10.0,
+              child: Image.network(
+                imagenCategoria,
+                width: double.infinity,
+                height: 100.0,
+                fit: BoxFit.cover,
               ),
-              Text(
-                nombreCategoria,
-                style: const TextStyle(
-                  fontFamily: "Actor",
-                  color: AppColors.primaryTextColor,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            Text(
+              nombreCategoria,
+              style: const TextStyle(
+                fontFamily: "Actor",
+                color: AppColors.primaryTextColor,
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

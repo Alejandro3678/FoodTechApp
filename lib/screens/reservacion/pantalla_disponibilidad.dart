@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:food_tech_app/screens/reservacion/pantalla_reserva.dart';
 import 'package:food_tech_app/utils/colors.dart';
-import 'package:food_tech_app/widgets/componentes/custom_seccion_encabezado.dart';
+import 'package:food_tech_app/widgets/custom_seccion_encabezado.dart';
 
 class PantallaDisponibilidad extends StatefulWidget {
   const PantallaDisponibilidad({super.key});
 
   @override
-  _PantallaDisponibilidadState createState() => _PantallaDisponibilidadState();
+  State<PantallaDisponibilidad> createState() => _PantallaDisponibilidadState();
 }
 
 class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
@@ -66,12 +67,34 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text("Hora inválida"),
+          title: const Text(
+            "Hora inválida",
+            style: TextStyle(
+              fontSize: 20.0,
+              fontFamily: "Allerta",
+              color: AppColors.naranja,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           content: const Text(
-              "No puedes seleccionar una hora antes de las 3:00 PM para hoy."),
+            "No puedes seleccionar una hora antes de las 3:00 PM para hoy.",
+            style: TextStyle(
+              fontSize: 16.0,
+              fontFamily: "Actor",
+              color: AppColors.negro,
+            ),
+          ),
           actions: <Widget>[
             TextButton(
-              child: const Text("Aceptar"),
+              child: const Text(
+                "ACEPTAR",
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontFamily: "Actor",
+                  color: AppColors.naranja,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -84,32 +107,73 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
 
   void _checkAvailability() {
     setState(() {
-      //isAvailable = selectedGuests % 2 == 0;
+      isAvailable = selectedGuests % 2 == 0;
     });
-    Navigator.pushNamed(context, "/reserva");
-    /*
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ReservationScreen()),
+    );
+
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: isAvailable
-              ? const Text("Disponibilidad")
-              : const Text("No hay disponibilidad"),
+              ? const Text(
+                  "Disponibilidad",
+                  style: TextStyle(
+                    fontSize: 22.0,
+                    fontFamily: "Actor",
+                    color: AppColors.naranja,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              : const Text(
+                  "No hay disponibilidad",
+                  style: TextStyle(
+                    fontSize: 22.0,
+                    fontFamily: "Actor",
+                    color: AppColors.negro,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
           content: isAvailable
-              ? const Text("¡Hay disponibilidad en el horario seleccionado!")
+              ? const Text(
+                  "¡Hay disponibilidad en el horario seleccionado!",
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: "Actor",
+                    color: AppColors.naranja,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
               : const Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Icons.warning, color: Colors.red, size: 50),
+                    Icon(Icons.warning, color: AppColors.rojo, size: 50),
                     SizedBox(height: 16),
                     Text(
-                        "Desafortunadamente, no disponemos de mesas en el horario elegido. "
-                        "Por favor, selecciona otro horario o restaurante."),
+                      "Desafortunadamente, no disponemos de mesas en el horario elegido. "
+                      "Por favor, selecciona otro horario o restaurante.",
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontFamily: "Actor",
+                        color: AppColors.negro,
+                      ),
+                    ),
                   ],
                 ),
           actions: <Widget>[
             TextButton(
-              child: const Text("Aceptar"),
+              child: const Text(
+                "ACEPTAR",
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontFamily: "Actor",
+                  color: AppColors.naranja,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -118,7 +182,6 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
         );
       },
     );
-    */
   }
 
   final String titulo = "RESERVACIONES";
@@ -136,6 +199,7 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
             right: 20.0,
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SeccionEncabezado(
@@ -148,23 +212,25 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
                 style: TextStyle(
                   fontSize: 22.0,
                   fontFamily: "Allerta",
-                  color: AppColors.titleTextColor,
+                  color: AppColors.naranja,
                 ),
               ),
               const SizedBox(height: 16),
               const Text(
                 'Elige el restaurante de tu preferencia:',
                 style: TextStyle(
-                  fontSize: 18.0,
+                  fontSize: 16.0,
                   fontFamily: "Actor",
-                  color: AppColors.primaryTextColor,
+                  color: AppColors.negro,
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              const SizedBox(height: 5.0),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.primaryBorderColor),
+                  borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+                  border: Border.all(color: AppColors.naranja),
                 ),
                 child: DropdownButton<String>(
                   value: selectedRestaurant,
@@ -174,7 +240,7 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
                     style: TextStyle(
                       fontSize: 15.0,
                       fontFamily: "Actor",
-                      color: AppColors.subTitleTextColor,
+                      color: AppColors.grisOscuro,
                     ),
                   ),
                   underline: const SizedBox(),
@@ -192,7 +258,7 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
                         style: const TextStyle(
                           fontSize: 15.0,
                           fontFamily: "Actor",
-                          color: AppColors.primaryTextColor,
+                          color: AppColors.negro,
                         ),
                       ),
                     );
@@ -203,16 +269,18 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
               const Text(
                 'Número de invitados:',
                 style: TextStyle(
-                  fontSize: 18.0,
+                  fontSize: 16.0,
                   fontFamily: "Actor",
-                  color: AppColors.primaryTextColor,
+                  color: AppColors.negro,
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              const SizedBox(height: 5.0),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                  border: Border.all(color: const Color(0xFFFF8B24)),
+                  borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+                  border: Border.all(color: AppColors.naranja),
                 ),
                 child: DropdownButton<int>(
                   value: selectedGuests,
@@ -232,7 +300,7 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
                         style: const TextStyle(
                           fontSize: 18.0,
                           fontFamily: "Actor",
-                          color: AppColors.subTitleTextColor,
+                          color: AppColors.grisOscuro,
                         ),
                       ),
                     );
@@ -245,10 +313,11 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
                 style: TextStyle(
                   fontSize: 16.0,
                   fontFamily: "Actor",
-                  color: AppColors.primaryTextColor,
+                  color: AppColors.negro,
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              const SizedBox(height: 5.0),
               Row(
                 children: [
                   Expanded(
@@ -256,20 +325,23 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10, vertical: 15),
                       decoration: BoxDecoration(
-                        border: Border.all(color: const Color(0xFFFF8B24)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(5.0)),
+                        border: Border.all(color: AppColors.naranja),
                       ),
                       child: Text(
                         "${selectedDate.toLocal()}".split(' ')[0],
                         style: const TextStyle(
                           fontSize: 16.0,
                           fontFamily: "Actor",
-                          color: AppColors.subTitleTextColor,
+                          color: AppColors.grisOscuro,
                         ),
                       ),
                     ),
                   ),
                   IconButton(
                     icon: const Icon(Icons.calendar_today),
+                    color: AppColors.naranja,
                     onPressed: () => _selectDate(context),
                   ),
                 ],
@@ -278,12 +350,13 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
               const Text(
                 'Hora:',
                 style: TextStyle(
-                  fontSize: 18.0,
+                  fontSize: 16.0,
                   fontFamily: "Actor",
-                  color: AppColors.primaryTextColor,
+                  color: AppColors.negro,
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              const SizedBox(height: 5.0),
               Row(
                 children: [
                   Expanded(
@@ -291,40 +364,43 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10, vertical: 15),
                       decoration: BoxDecoration(
-                        border: Border.all(color: const Color(0xFFFF8B24)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(5.0)),
+                        border: Border.all(color: AppColors.naranja),
                       ),
                       child: Text(
                         selectedTime.format(context),
                         style: const TextStyle(
                           fontSize: 15.0,
                           fontFamily: "Actor",
-                          color: AppColors.subTitleTextColor,
+                          color: AppColors.grisOscuro,
                         ),
                       ),
                     ),
                   ),
                   IconButton(
                     icon: const Icon(Icons.access_time),
+                    color: AppColors.naranja,
                     onPressed: () => _selectTime(context),
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 40.0),
               Center(
                 child: ElevatedButton(
                   onPressed: _checkAvailability,
                   style: const ButtonStyle(
                     backgroundColor: WidgetStatePropertyAll(
-                      AppColors.buttonBackgroundColor,
+                      AppColors.naranja,
                     ),
-                    elevation: WidgetStatePropertyAll(10),
+                    elevation: WidgetStatePropertyAll(10.0),
                   ),
                   child: const Text(
                     "BUSCAR",
                     style: TextStyle(
-                      color: AppColors.buttonTextColor,
+                      color: AppColors.blanco,
                       fontFamily: "Actor",
-                      fontSize: 20.0,
+                      fontSize: 18.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
