@@ -1,6 +1,23 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  //COLORES
+  /*
+  blanco
+  naranja
+  gris oscuro
+  gris claro
+  rojo
+  */
+
+  //Colores a utilizar
+  static const Color blanco = Color(0xFFFFFFFF);
+  static const Color negro = Color(0xFF000000);
+  static const Color naranja = Color(0xFFFF8B24);
+  static const Color grisOscuro = Color(0xFF686D76);
+  static const Color grisClaro = Color(0xFFe5e5e5);
+  static const Color rojo = Color(0xFFDA0606);
+
   //Colores de fondo
   static const Color backgroundColor = Color(0xFFFFFFFF);
   static const Color containerBackgroundColor = Color(0xFFFF8B24);

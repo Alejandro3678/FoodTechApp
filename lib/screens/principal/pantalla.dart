@@ -4,7 +4,7 @@ import 'package:food_tech_app/screens/menu/pantalla_menu_dia.dart';
 import 'package:food_tech_app/screens/ofertas/pantalla_ofertas.dart';
 import 'package:food_tech_app/screens/reservacion/pantalla_disponibilidad.dart';
 import 'package:food_tech_app/utils/colors.dart';
-import 'package:food_tech_app/widgets/componentes/custom_appbar.dart';
+import 'package:food_tech_app/widgets/custom_appbar.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
