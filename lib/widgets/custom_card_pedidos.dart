@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_tech_app/utils/colors.dart';
 
-/*
-Clase que hereda de StatefulWidget porque estará cambiando de estado.
-*/
 class TarjetasPedidos extends StatefulWidget {
-  //Definimos los atributos que utilizaremos.
   final String imagenComida;
   final String tituloComida;
   final String descripcionComida;
@@ -24,10 +20,8 @@ class TarjetasPedidos extends StatefulWidget {
 }
 
 class _TarjetasPedidosState extends State<TarjetasPedidos> {
-  //Variable que incrementa o decrementa según su manipulación.
   int incrementadorComida = 1;
 
-  //Función que decrementa la cantidad de comida.
   void decrementar(StateSetter actualizarEstadoDialogo) {
     if (incrementadorComida > 1) {
       actualizarEstadoDialogo(() {
@@ -36,14 +30,12 @@ class _TarjetasPedidosState extends State<TarjetasPedidos> {
     }
   }
 
-  //Función que incrementa la cantidad de comida.
   void incrementar(StateSetter actualizarEstadoDialogo) {
     actualizarEstadoDialogo(() {
       incrementadorComida++;
     });
   }
 
-  // Mostrar el dialogo de modificar cantidad
   void mostrarDialogModificar(BuildContext context) {
     showDialog(
       context: context,
@@ -120,12 +112,11 @@ class _TarjetasPedidosState extends State<TarjetasPedidos> {
     );
   }
 
-  /*
-  Construimos las TarjetasPedidos donde se presentará la imagen, titulo,
-  descripción, precio y botones de modificar y eliminar.
-  */
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final isSmallScreen = mediaQuery.size.width < 600;
+
     return Card(
       elevation: 4.0,
       margin: const EdgeInsets.all(10.0),
@@ -138,8 +129,8 @@ class _TarjetasPedidosState extends State<TarjetasPedidos> {
               borderRadius: BorderRadius.circular(5.0),
               child: Image.network(
                 widget.imagenComida,
-                width: 120,
-                height: 80,
+                width: isSmallScreen ? 80 : 120,
+                height: isSmallScreen ? 60 : 80,
                 fit: BoxFit.cover,
               ),
             ),
@@ -161,7 +152,7 @@ class _TarjetasPedidosState extends State<TarjetasPedidos> {
                   Text(
                     widget.descripcionComida,
                     style: const TextStyle(
-                      color: AppColors.secondTextColor,
+                      color: AppColors.primaryTextColor,
                       fontSize: 12.0,
                       fontFamily: "Actor",
                     ),
@@ -179,46 +170,23 @@ class _TarjetasPedidosState extends State<TarjetasPedidos> {
                       ),
                       Row(
                         children: [
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.buttonBackgroundColor,
-                            ),
+                          IconButton(
+                            icon: const Icon(Icons.edit, color: AppColors.buttonBackgroundColor),
                             onPressed: () {
                               mostrarDialogModificar(context);
                             },
-                            child: const Text(
-                              "Modificar",
-                              style: TextStyle(
-                                color: AppColors.secondTextColor,
-                                fontSize: 15.0,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: "Actor",
-                              ),
-                            ),
                           ),
-                          const SizedBox(width: 8),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.red,
-                            ),
+                          IconButton(
+                            icon: const Icon(Icons.delete, color: Colors.red),
                             onPressed: () {
                               // Acción para eliminar
                               print('Eliminar ${widget.tituloComida}');
                             },
-                            child: const Text(
-                              "Eliminar",
-                              style: TextStyle(
-                                color: AppColors.secondTextColor,
-                                fontSize: 15.0,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: "Actor",
-                              ),
-                            ),
                           ),
                         ],
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
