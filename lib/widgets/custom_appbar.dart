@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_tech_app/screens/pedidos/pantalla_pedidos.dart';
 import 'package:food_tech_app/utils/colors.dart';
 
 class BarraNavegacionSuperior extends StatelessWidget
@@ -40,7 +41,13 @@ class BarraNavegacionSuperior extends StatelessWidget
       ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            // Verificamos si el Navigator está siendo llamado correctamente.
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const PantallaPedidos()),
+            );
+          },
           icon: const Icon(Icons.shopping_cart_rounded),
           color: AppColors.primaryIconColor,
           iconSize: 30.0,

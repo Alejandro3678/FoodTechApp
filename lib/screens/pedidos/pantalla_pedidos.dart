@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_tech_app/screens/pedidos/seccion_cuerpo_pedido.dart';
 
-//Pantalla Menu.
+//Pantalla Pedidos.
 class PantallaPedidos extends StatelessWidget {
   const PantallaPedidos({super.key});
 

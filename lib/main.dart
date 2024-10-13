@@ -3,6 +3,7 @@ import 'package:food_tech_app/screens/autenticacion/pantalla_inicio_sesion.dart'
 import 'package:food_tech_app/screens/autenticacion/pantalla_registro.dart';
 import 'package:food_tech_app/screens/intro/pantalla_inicio.dart';
 import 'package:food_tech_app/screens/menu/pantalla_menu_dia.dart';
+import 'package:food_tech_app/screens/pedidos/pantalla_pedidos.dart';
 import 'package:food_tech_app/screens/perfil/pantalla_perfil.dart';
 import 'package:food_tech_app/screens/principal/pantalla.dart';
 import 'package:food_tech_app/screens/reservacion/pantalla_disponibilidad.dart';
@@ -24,6 +25,7 @@ class RicoApp extends StatelessWidget {
     "/menu": (context) => const PantallaMenuDia(),
     "/disponibilidad": (context) => const PantallaDisponibilidad(),
     "/reserva": (context) => const ReservationScreen(),
+    "/pedidos": (context) => const PantallaPedidos(),
     "/principal": (context) => const MainApp(),
   };
 
