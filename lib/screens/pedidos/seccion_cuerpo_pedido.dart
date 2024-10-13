@@ -9,7 +9,7 @@ class SeccionCuerpoPedido extends StatelessWidget {
   del encabezado de la pantalla.
   */
   final String titulo = "Pedidos realizados";
-  final String logo = "assets/img/logo_menu.png";
+  final String logo = "assets/img/logo_rico_app.png";
 
   const SeccionCuerpoPedido({super.key});
 
@@ -36,35 +36,35 @@ class SeccionCuerpoPedido extends StatelessWidget {
               */
               const TarjetasPedidos(
                 imagenComida:
-                    "https://i0.wp.com/goula.lat/wp-content/uploads/2019/12/hamburguesa-beyond-meat-scaled-e1577396155298.jpg?fit=1600%2C1068&ssl=1",
+                    "https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80",
                 tituloComida: "HAMBURGUESA",
                 descripcionComida: "Papas, carne de res, ceboola",
                 precioComida: 10.50,
               ),
               const TarjetasPedidos(
                 imagenComida:
-                    "https://pjsv-images.nyc3.digitaloceanspaces.com/common-files/product-126/bebida_coca_cola_lata.jpg",
+                    "https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80",
                 tituloComida: "Coca Cola Lata",
                 descripcionComida: "Coca-Cola Lata 354mL",
                 precioComida: 1.55,
               ),
               const TarjetasPedidos(
                 imagenComida:
-                    "https://pjsv-images.nyc3.digitaloceanspaces.com/common-files/product-126/bebida_coca_cola_lata.jpg",
+                    "https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80",
                 tituloComida: "Coca Cola Lata",
                 descripcionComida: "Coca-Cola Lata 354mL",
                 precioComida: 1.55,
               ),
               const TarjetasPedidos(
                 imagenComida:
-                    "https://pjsv-images.nyc3.digitaloceanspaces.com/common-files/product-31/238-item-agua.jpg",
+                    "https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80",
                 tituloComida: "Botella de Agua",
                 descripcionComida: "Botella de agua 600mL",
                 precioComida: 1.50,
               ),
               const TarjetasPedidos(
                 imagenComida:
-                    "https://pjsv-images.nyc3.digitaloceanspaces.com/common-files/product-26/coca-cola.jpg",
+                    "https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80",
                 tituloComida: "Coca Cola 1.25L",
                 descripcionComida: "Coca-Cola Botella 1.25 L",
                 precioComida: 1.75,
