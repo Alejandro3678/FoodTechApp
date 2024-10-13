@@ -3,8 +3,8 @@ import 'package:food_tech_app/screens/categoria/pantalla_categoria.dart';
 import 'package:food_tech_app/screens/menu/pantalla_menu_dia.dart';
 import 'package:food_tech_app/screens/ofertas/pantalla_ofertas.dart';
 import 'package:food_tech_app/screens/reservacion/pantalla_disponibilidad.dart';
-import 'package:food_tech_app/screens/pedidos/pantalla_pedidos.dart';
 import 'package:food_tech_app/utils/colors.dart';
+import 'package:food_tech_app/widgets/custom_appbar.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
@@ -16,20 +16,21 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   final String iconoApp = "assets/img/icono_rico_app.png";
   final String nombreApp = "RicoApp";
-  int itemSeleccionado = 0; // Índice del ítem seleccionado
 
-  // Lista de pantallas
+  //Indice del ítem seleccionado
+  static int itemSeleccionado = 0;
+
+  //Lista de pantallas
   final List<Widget> listaPantallas = const [
     PantallaOfertas(),
     PantallaCategorias(),
     PantallaMenuDia(),
     PantallaDisponibilidad(),
-    PantallaPedidos()
   ];
 
   void onItemTapped(int index) {
     setState(() {
-      // Cambia el ítem seleccionado
+      //Cambia el ítem seleccionado
       itemSeleccionado = index;
     });
   }
@@ -37,54 +38,14 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.containerBackgroundColor,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              width: 50.0,
-              height: 50.0,
-              iconoApp,
-              fit: BoxFit.cover,
-            ),
-            Text(
-              nombreApp,
-              style: const TextStyle(
-                color: AppColors.secondTextColor,
-                fontSize: 28,
-                fontFamily: "MoreSugar",
-              ),
-            ),
-          ],
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.menu_rounded),
-          color: AppColors.primaryIconColor,
-          iconSize: 30.0,
-        ),
-        actions: [
-          IconButton(
-            // Navega a la pantalla de Pedidos cuando se presiona el ícono
-            onPressed: () {},
-            icon: const Icon(Icons.shopping_cart_rounded),
-            color: AppColors.primaryIconColor,
-            iconSize: 30.0,
-          ),
-        ],
-      ),
-      body:
-          // Muestra la pantalla seleccionada
-      listaPantallas[itemSeleccionado],
+      appBar: const BarraNavegacionSuperior(),
+      body: listaPantallas[itemSeleccionado],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: AppColors.containerBackgroundColor,
-        // Cambia la pantalla cuando se presiona un icono
+        backgroundColor: AppColors.naranja,
         onTap: onItemTapped,
         currentIndex: itemSeleccionado,
-        selectedItemColor: AppColors.secondIconColor,
-        unselectedItemColor: AppColors.primaryIconColor,
+        selectedItemColor: AppColors.blanco,
+        unselectedItemColor: AppColors.negro,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.local_offer),
