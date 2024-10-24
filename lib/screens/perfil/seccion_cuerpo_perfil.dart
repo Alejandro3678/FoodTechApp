@@ -54,9 +54,10 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: AppColors.containerSecondBackgroundColor,
+                  color: AppColors.grisOscuro,
                 ),
-                width: double.infinity,
+                width: 500.0,
+                height: 700.0,
                 padding: const EdgeInsets.all(15.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,13 +66,13 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                       "INFORMACIÓN",
                       style: TextStyle(
                         fontSize: 18.0,
-                        color: AppColors.secondTextColor,
+                        color: AppColors.blanco,
                         fontFamily: "Actor",
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const Divider(
-                      color: AppColors.primaryBorderColor,
+                      color: AppColors.naranja,
                       thickness: 1.0,
                       height: 5.0,
                     ),
@@ -90,19 +91,19 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                           onPressed: () {},
                           style: const ButtonStyle(
                             overlayColor: WidgetStatePropertyAll(
-                              AppColors.backgroundColor,
+                              AppColors.blanco,
                             ),
                           ),
                           icon: const Icon(
                             Icons.edit_sharp,
-                            color: AppColors.containerBackgroundColor,
+                            color: AppColors.naranja,
                             size: 25.0,
                           ),
                           label: const Text(
                             "EDITAR",
                             style: TextStyle(
                               fontSize: 10.0,
-                              color: AppColors.titleTextColor,
+                              color: AppColors.naranja,
                               fontFamily: "Actor",
                             ),
                           ),
@@ -119,7 +120,7 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                         "$nombresUsuario $apellidosUsuario".toUpperCase(),
                         style: const TextStyle(
                           fontSize: 15.0,
-                          color: AppColors.secondTextColor,
+                          color: AppColors.blanco,
                           fontFamily: "Actor",
                           fontWeight: FontWeight.bold,
                         ),
@@ -135,7 +136,7 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                             "Correo:",
                             style: TextStyle(
                               fontSize: 15.0,
-                              color: AppColors.secondTextColor,
+                              color: AppColors.blanco,
                               fontFamily: "Actor",
                               fontWeight: FontWeight.bold,
                             ),
@@ -144,7 +145,7 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                             correoUsuario,
                             style: const TextStyle(
                               fontSize: 15.0,
-                              color: AppColors.secondTextColor,
+                              color: AppColors.blanco,
                               fontFamily: "Actor",
                             ),
                           ),
@@ -153,7 +154,7 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                             "Teléfono:",
                             style: TextStyle(
                               fontSize: 15.0,
-                              color: AppColors.secondTextColor,
+                              color: AppColors.blanco,
                               fontFamily: "Actor",
                               fontWeight: FontWeight.bold,
                             ),
@@ -162,7 +163,7 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                             telefonoUsuario,
                             style: const TextStyle(
                               fontSize: 15.0,
-                              color: AppColors.secondTextColor,
+                              color: AppColors.blanco,
                               fontFamily: "Actor",
                             ),
                           ),
@@ -171,7 +172,7 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                     ),
                     const SizedBox(height: 15.0),
                     const Divider(
-                      color: AppColors.primaryBorderColor,
+                      color: AppColors.naranja,
                       thickness: 1.0,
                       height: 5.0,
                     ),
@@ -186,26 +187,26 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                         onPressed: () {},
                         style: const ButtonStyle(
                           overlayColor: WidgetStatePropertyAll(
-                            AppColors.backgroundColor,
+                            AppColors.blanco,
                           ),
                         ),
                         icon: const Icon(
                           Icons.mail,
-                          color: AppColors.containerBackgroundColor,
+                          color: AppColors.naranja,
                           size: 25.0,
                         ),
                         label: const Text(
                           "CAMBIAR CORREO",
                           style: TextStyle(
                             fontSize: 15.0,
-                            color: AppColors.titleTextColor,
+                            color: AppColors.naranja,
                             fontFamily: "Actor",
                           ),
                         ),
                       ),
                     ),
                     const Divider(
-                      color: AppColors.primaryBorderColor,
+                      color: AppColors.naranja,
                       thickness: 1.0,
                       height: 5.0,
                     ),
@@ -220,26 +221,26 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                         onPressed: () {},
                         style: const ButtonStyle(
                           overlayColor: WidgetStatePropertyAll(
-                            AppColors.backgroundColor,
+                            AppColors.blanco,
                           ),
                         ),
                         icon: const Icon(
                           Icons.lock,
-                          color: AppColors.containerBackgroundColor,
+                          color: AppColors.naranja,
                           size: 25.0,
                         ),
                         label: const Text(
                           "CAMBIAR CONTRASEÑA",
                           style: TextStyle(
                             fontSize: 15.0,
-                            color: AppColors.titleTextColor,
+                            color: AppColors.naranja,
                             fontFamily: "Actor",
                           ),
                         ),
                       ),
                     ),
                     const Divider(
-                      color: AppColors.primaryBorderColor,
+                      color: AppColors.naranja,
                       thickness: 1.0,
                       height: 5.0,
                     ),
@@ -249,16 +250,16 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                         onPressed: () {},
                         style: const ButtonStyle(
                           backgroundColor: WidgetStatePropertyAll(
-                            AppColors.buttonBackgroundColor,
+                            AppColors.naranja,
                           ),
                           elevation: WidgetStatePropertyAll(10),
                         ),
                         child: const Text(
                           "GUARDAR",
                           style: TextStyle(
-                            color: AppColors.buttonTextColor,
+                            color: AppColors.blanco,
                             fontFamily: "Actor",
-                            fontSize: 22,
+                            fontSize: 22.0,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

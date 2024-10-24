@@ -98,7 +98,6 @@ class _ReservationScreenState extends State<ReservationScreen> {
           },
         ),
       ),
-      drawer: const Drawer(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -110,28 +109,28 @@ class _ReservationScreenState extends State<ReservationScreen> {
                   child: Text(
                     "HAZ TU RESERVA AQUÍ",
                     style: TextStyle(
-                      fontSize: 22,
+                      fontSize: 22.0,
                       fontFamily: "Allerta",
                       fontWeight: FontWeight.bold,
                       color: AppColors.naranja,
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 20.0),
                 _buildTextField("NOMBRE", _nameController),
-                const SizedBox(height: 10),
+                const SizedBox(height: 10.0),
                 _buildTextField("CORREO", _emailController),
-                const SizedBox(height: 10),
+                const SizedBox(height: 10.0),
                 _buildTextField("TELÉFONO", _phoneController),
-                const SizedBox(height: 20),
+                const SizedBox(height: 20.0),
                 _buildSectionTitle("SOLICITUDES ESPECIALES:"),
                 _buildMultiLineTextField(_specialRequestsController,
                     "Ej: ¿Sería posible que nos asignen una mesa en una zona más tranquila del restaurante?."),
-                const SizedBox(height: 20),
+                const SizedBox(height: 20.0),
                 _buildSectionTitle("COMENTARIOS:"),
                 _buildMultiLineTextField(
                     _commentsController, "Ej: Excelente restaurante..."),
-                const SizedBox(height: 20),
+                const SizedBox(height: 20.0),
                 Row(
                   children: <Widget>[
                     Checkbox(
@@ -152,7 +151,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 20.0),
                 Center(
                   child: ElevatedButton(
                     onPressed: _submitForm,
@@ -162,13 +161,13 @@ class _ReservationScreenState extends State<ReservationScreen> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 25.0, vertical: 10.0),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
                     ),
                     child: const Text(
                       "RESERVAR",
                       style: TextStyle(
-                        fontSize: 16.0,
+                        fontSize: 18.0,
                         fontFamily: "Actor",
                         color: AppColors.blanco,
                         fontWeight: FontWeight.bold,
@@ -241,5 +240,4 @@ class _ReservationScreenState extends State<ReservationScreen> {
       ),
     );
   }
-
 }

@@ -43,22 +43,34 @@ class _TarjetasPedidosState extends State<TarjetasPedidos> {
         return StatefulBuilder(
           builder: (context, StateSetter setState) {
             return AlertDialog(
-              title: Text('Modificar ${widget.tituloComida}'),
+              title: Text(
+                'Modificar ${widget.tituloComida}',
+                style: const TextStyle(
+                  color: AppColors.negro,
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Actor",
+                ),
+              ),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Image.network(
                     widget.imagenComida,
-                    width: 120,
-                    height: 80,
+                    width: 120.0,
+                    height: 80.0,
                     fit: BoxFit.cover,
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 10.0),
                   Text(
                     widget.descripcionComida,
-                    style: const TextStyle(fontSize: 14.0),
+                    style: const TextStyle(
+                      color: AppColors.grisOscuro,
+                      fontSize: 13.0,
+                      fontFamily: "Actor",
+                    ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 20.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -70,7 +82,12 @@ class _TarjetasPedidosState extends State<TarjetasPedidos> {
                       ),
                       Text(
                         incrementadorComida.toString(),
-                        style: const TextStyle(fontSize: 20),
+                        style: const TextStyle(
+                          color: AppColors.negro,
+                          fontSize: 15.0,
+                          fontFamily: "Allerta",
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       IconButton(
                         icon: const Icon(Icons.add),
@@ -80,12 +97,14 @@ class _TarjetasPedidosState extends State<TarjetasPedidos> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 20.0),
                   Text(
                     "Precio Total: \$ ${(widget.precioComida * incrementadorComida).toStringAsFixed(2)}",
                     style: const TextStyle(
+                      color: AppColors.naranja,
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
+                      fontFamily: "Actor",
                     ),
                   ),
                 ],
@@ -95,14 +114,36 @@ class _TarjetasPedidosState extends State<TarjetasPedidos> {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: const Text("Cancelar"),
+                  child: const Text(
+                    "Cancelar",
+                    style: TextStyle(
+                      color: AppColors.naranja,
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "Actor",
+                    ),
+                  ),
                 ),
                 ElevatedButton(
+                  style: const ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(
+                      AppColors.naranja,
+                    ),
+                    elevation: WidgetStatePropertyAll(5.0),
+                  ),
                   onPressed: () {
                     // Aquí puedes agregar la funcionalidad de actualizar el carrito con la nueva cantidad
                     Navigator.of(context).pop();
                   },
-                  child: const Text("Guardar"),
+                  child: const Text(
+                    "Guardar",
+                    style: TextStyle(
+                      color: AppColors.blanco,
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "Actor",
+                    ),
+                  ),
                 ),
               ],
             );
@@ -143,7 +184,7 @@ class _TarjetasPedidosState extends State<TarjetasPedidos> {
                   Text(
                     widget.tituloComida,
                     style: const TextStyle(
-                      color: AppColors.primaryTextColor,
+                      color: AppColors.negro,
                       fontSize: 15.0,
                       fontWeight: FontWeight.bold,
                       fontFamily: "Actor",
@@ -152,7 +193,7 @@ class _TarjetasPedidosState extends State<TarjetasPedidos> {
                   Text(
                     widget.descripcionComida,
                     style: const TextStyle(
-                      color: AppColors.primaryTextColor,
+                      color: AppColors.negro,
                       fontSize: 12.0,
                       fontFamily: "Actor",
                     ),
@@ -163,7 +204,7 @@ class _TarjetasPedidosState extends State<TarjetasPedidos> {
                       Text(
                         "\$ ${widget.precioComida}",
                         style: const TextStyle(
-                          color: AppColors.titleTextColor,
+                          color: AppColors.naranja,
                           fontSize: 18.0,
                           fontFamily: "Allerta",
                         ),
@@ -171,13 +212,15 @@ class _TarjetasPedidosState extends State<TarjetasPedidos> {
                       Row(
                         children: [
                           IconButton(
-                            icon: const Icon(Icons.edit, color: AppColors.buttonBackgroundColor),
+                            icon: const Icon(Icons.edit,
+                                color: AppColors.naranja),
                             onPressed: () {
                               mostrarDialogModificar(context);
                             },
                           ),
                           IconButton(
-                            icon: const Icon(Icons.delete, color: Colors.red),
+                            icon:
+                                const Icon(Icons.delete, color: AppColors.rojo),
                             onPressed: () {
                               // Acción para eliminar
                               print('Eliminar ${widget.tituloComida}');

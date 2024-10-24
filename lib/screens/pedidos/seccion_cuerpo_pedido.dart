@@ -9,7 +9,7 @@ class SeccionCuerpoPedido extends StatelessWidget {
   del encabezado de la pantalla.
   */
   final String titulo = "Pedidos realizados";
-  final String logo = "assets/img/logo_rico_app.png";
+  final String logo = "assets/img/logo_pedidos.png";
 
   const SeccionCuerpoPedido({super.key});
 

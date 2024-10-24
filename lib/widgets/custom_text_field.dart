@@ -20,31 +20,31 @@ class CajaTextoBase extends StatelessWidget {
       decoration: InputDecoration(
         hintText: textoHint,
         hintStyle: const TextStyle(
-          color: AppColors.hintTextFieldTextColor,
+          color: AppColors.grisOscuro,
           fontFamily: "Actor",
-          fontSize: 16,
+          fontSize: 16.0,
         ),
         //Configuramos los bordes y color del TextField
         enabledBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          borderSide: BorderSide(color: AppColors.primaryBorderColor),
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          borderSide: BorderSide(color: AppColors.naranja),
         ),
         focusedBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          borderSide: BorderSide(color: AppColors.primaryBorderColor),
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          borderSide: BorderSide(color: AppColors.naranja),
         ),
         filled: true,
-        fillColor: AppColors.textFieldBackgroundColor,
+        fillColor: AppColors.grisClaro,
         suffixIcon: Icon(
           icono,
-          color: AppColors.textFieldIconColor,
+          color: AppColors.naranja,
         ),
       ),
-      cursorColor: AppColors.cursorColor,
+      cursorColor: AppColors.naranja,
       style: const TextStyle(
-        color: AppColors.textFieldTextColor,
+        color: AppColors.negro,
         fontFamily: "Actor",
-        fontSize: 18,
+        fontSize: 18.0,
       ),
     );
   }

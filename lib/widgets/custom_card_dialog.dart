@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_tech_app/utils/colors.dart';
 
-class CustomShowDialog {
+class CustomCardDialog {
   final String imagenComida;
   final String nombreComida;
   final String descripcionComida;
@@ -26,7 +26,7 @@ class CustomShowDialog {
     });
   }
 
-  CustomShowDialog({
+  CustomCardDialog({
     required this.imagenComida,
     required this.nombreComida,
     required this.descripcionComida,
@@ -69,16 +69,16 @@ class CustomShowDialog {
                           width: double.infinity,
                           child: Image.network(
                             imagenComida,
-                            height: 150,
+                            height: 150.0,
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 10.0),
                       Text(
                         nombreComida,
                         style: const TextStyle(
-                          color: AppColors.primaryTextColor,
+                          color: AppColors.negro,
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold,
                           fontFamily: "Actor",
@@ -87,7 +87,7 @@ class CustomShowDialog {
                       Text(
                         descripcionComida,
                         style: const TextStyle(
-                          color: AppColors.subTitleTextColor,
+                          color: AppColors.grisOscuro,
                           fontSize: 13.0,
                           fontFamily: "Actor",
                         ),
@@ -98,7 +98,7 @@ class CustomShowDialog {
                           const Text(
                             "CANTIDAD",
                             style: TextStyle(
-                              color: AppColors.subTitleTextColor,
+                              color: AppColors.grisOscuro,
                               fontSize: 12.0,
                               fontFamily: "Actor",
                               letterSpacing: 1.0,
@@ -112,9 +112,9 @@ class CustomShowDialog {
                           ),
                           //Aquí se muestra la variable incrementadorComida.
                           Text(
-                            "$incrementadorComida",
+                            incrementadorComida.toString(),
                             style: const TextStyle(
-                              color: AppColors.primaryTextColor,
+                              color: AppColors.negro,
                               fontSize: 15.0,
                               fontFamily: "Allerta",
                               fontWeight: FontWeight.bold,
@@ -129,9 +129,9 @@ class CustomShowDialog {
                           //Aquí se muestra la multiplicacion del precio de
                           //la comida con la incrementadorComida.
                           Text(
-                            "\$ ${precioComida * incrementadorComida}",
+                            "\$ ${(precioComida * incrementadorComida).toStringAsFixed(2)}",
                             style: const TextStyle(
-                              color: AppColors.titleTextColor,
+                              color: AppColors.naranja,
                               fontSize: 18.0,
                               fontFamily: "Allerta",
                             ),
@@ -143,7 +143,7 @@ class CustomShowDialog {
                         child: ElevatedButton(
                           style: const ButtonStyle(
                             backgroundColor: WidgetStatePropertyAll(
-                              AppColors.buttonBackgroundColor,
+                              AppColors.naranja,
                             ),
                             elevation: WidgetStatePropertyAll(5.0),
                           ),
@@ -173,7 +173,7 @@ class CustomShowDialog {
                                         const Text(
                                           "PRODUCTO AGREGADO A TU CARRITO",
                                           style: TextStyle(
-                                            color: AppColors.titleTextColor,
+                                            color: AppColors.naranja,
                                             fontSize: 14.0,
                                             fontWeight: FontWeight.bold,
                                             fontFamily: "Actor",
@@ -182,7 +182,7 @@ class CustomShowDialog {
                                         Text(
                                           nombreComida.toUpperCase(),
                                           style: const TextStyle(
-                                            color: AppColors.subTitleTextColor,
+                                            color: AppColors.grisOscuro,
                                             fontSize: 12.0,
                                             fontFamily: "Actor",
                                           ),
@@ -197,7 +197,7 @@ class CustomShowDialog {
                           child: const Text(
                             "Añadir al carrito",
                             style: TextStyle(
-                              color: AppColors.secondTextColor,
+                              color: AppColors.blanco,
                               fontSize: 15.0,
                               fontWeight: FontWeight.bold,
                               fontFamily: "Actor",

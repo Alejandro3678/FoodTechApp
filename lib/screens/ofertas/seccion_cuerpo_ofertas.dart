@@ -15,6 +15,7 @@ class SeccionCuerpoOfertas extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
@@ -24,7 +25,7 @@ class SeccionCuerpoOfertas extends StatelessWidget {
               Text(
                 "¡Hola, $nombreUsuario!",
                 style: const TextStyle(
-                  color: AppColors.titleTextColor,
+                  color: AppColors.naranja,
                   fontFamily: "Allerta",
                   fontSize: 22,
                   fontWeight: FontWeight.bold,

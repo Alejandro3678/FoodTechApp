@@ -23,7 +23,7 @@ class SeccionEncabezado extends StatelessWidget {
           Text(
             tituloPantalla,
             style: const TextStyle(
-              color: AppColors.titleTextColor,
+              color: AppColors.naranja,
               fontFamily: "Allerta",
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
@@ -32,8 +32,8 @@ class SeccionEncabezado extends StatelessWidget {
           ),
           Image.asset(
             rutaLogo,
-            width: 70,
-            height: 70,
+            width: 70.0,
+            height: 70.0,
           ),
         ],
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_tech_app/screens/autenticacion/pantalla_inicio_sesion.dart';
-import 'package:food_tech_app/screens/autenticacion/pantalla_registro.dart';
+import 'package:food_tech_app/screens/autenticacion/inicio_sesion/pantalla_inicio_sesion.dart';
+import 'package:food_tech_app/screens/autenticacion/registro/pantalla_registro.dart';
 import 'package:food_tech_app/screens/intro/pantalla_inicio.dart';
 import 'package:food_tech_app/screens/menu/pantalla_menu_dia.dart';
 import 'package:food_tech_app/screens/pedidos/pantalla_pedidos.dart';

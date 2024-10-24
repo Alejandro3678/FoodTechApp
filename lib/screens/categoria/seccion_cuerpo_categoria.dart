@@ -33,7 +33,7 @@ class SeccionCuerpoCategoria extends StatelessWidget {
                 "Selecciona la categoría que deseas ver",
                 style: TextStyle(
                   fontSize: 18,
-                  color: AppColors.primaryTextColor,
+                  color: AppColors.negro,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -123,7 +123,7 @@ class SeccionCuerpoCategoria extends StatelessWidget {
               nombreCategoria,
               style: const TextStyle(
                 fontFamily: "Actor",
-                color: AppColors.primaryTextColor,
+                color: AppColors.negro,
                 fontSize: 16.0,
                 fontWeight: FontWeight.bold,
               ),

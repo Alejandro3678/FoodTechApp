@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_tech_app/screens/pedidos/seccion_cuerpo_pedido.dart';
+import 'package:food_tech_app/utils/colors.dart';
 
 //Pantalla Pedidos.
 class PantallaPedidos extends StatelessWidget {
@@ -11,8 +12,18 @@ class PantallaPedidos extends StatelessWidget {
   */
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SeccionCuerpoPedido(),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.naranja,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          color: AppColors.negro,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: const SeccionCuerpoPedido(),
     );
   }
 }
