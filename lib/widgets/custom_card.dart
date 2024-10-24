@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_tech_app/utils/colors.dart';
-import 'package:food_tech_app/widgets/custom_show_dialog.dart';
+import 'package:food_tech_app/widgets/custom_card_dialog.dart';
 
 /*
 Clase que hereda de StatefulWidget porque estará cambiando de estado.
@@ -62,8 +62,8 @@ class _TarjetasState extends State<Tarjetas> {
               borderRadius: BorderRadius.circular(5.0),
               child: Image.network(
                 widget.imagenComida,
-                width: 120,
-                height: 80,
+                width: 120.0,
+                height: 80.0,
                 fit: BoxFit.cover,
               ),
             ),
@@ -84,7 +84,7 @@ class _TarjetasState extends State<Tarjetas> {
                   ),
                   InkWell(
                     onTap: () {
-                      CustomShowDialog(
+                      CustomCardDialog(
                         imagenComida: widget.imagenComida,
                         nombreComida: widget.tituloComida,
                         descripcionComida: widget.descripcionComida,
@@ -123,7 +123,7 @@ class _TarjetasState extends State<Tarjetas> {
                             elevation: WidgetStatePropertyAll(5.0),
                           ),
                           onPressed: () {
-                            CustomShowDialog(
+                            CustomCardDialog(
                               imagenComida: widget.imagenComida,
                               nombreComida: widget.tituloComida,
                               descripcionComida: widget.descripcionComida,

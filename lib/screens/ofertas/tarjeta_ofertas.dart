@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_tech_app/utils/colors.dart';
-import 'package:food_tech_app/widgets/custom_show_dialog.dart';
+import 'package:food_tech_app/widgets/custom_card_dialog.dart';
 
 class TarjetaOfertas extends StatelessWidget {
   final String imagenPromocion;
@@ -66,7 +66,7 @@ class TarjetaOfertas extends StatelessWidget {
             const Spacer(),
             ElevatedButton(
               onPressed: () {
-                CustomShowDialog(
+                CustomCardDialog(
                   imagenComida: imagenPromocion,
                   nombreComida: nombrePromocion,
                   descripcionComida: descripcionPromocion,

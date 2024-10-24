@@ -11,7 +11,7 @@ class BarraNavegacionSuperior extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.containerBackgroundColor,
+      backgroundColor: AppColors.naranja,
       title: Row(
         //crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -25,24 +25,18 @@ class BarraNavegacionSuperior extends StatelessWidget
           Text(
             nombreApp,
             style: const TextStyle(
-              color: AppColors.secondTextColor,
-              fontSize: 28,
+              color: AppColors.blanco,
+              fontSize: 28.0,
               fontFamily: "MoreSugar",
             ),
           ),
         ],
       ),
       centerTitle: true,
-      leading: IconButton(
-        onPressed: () {},
-        icon: const Icon(Icons.menu_rounded),
-        color: AppColors.primaryIconColor,
-        iconSize: 30.0,
-      ),
       actions: [
         IconButton(
           onPressed: () {
-            // Verificamos si el Navigator está siendo llamado correctamente.
+            //Dirige a pantalla de pedidos
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const PantallaPedidos()),

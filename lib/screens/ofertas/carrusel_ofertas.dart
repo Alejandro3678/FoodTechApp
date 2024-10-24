@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:food_tech_app/utils/colors.dart';
-import 'package:food_tech_app/widgets/custom_show_dialog.dart';
+import 'package:food_tech_app/widgets/custom_card_dialog.dart';
 
 //Lista de url de imagenes
 final List<String> listaImagenOfertas = [
@@ -23,36 +23,37 @@ class _CarruselOfertasState extends State<CarruselOfertas> {
 
   @override
   Widget build(BuildContext context) {
-
 /*
 Esta lista contiene los url de las imagenes en el cual con el metodo
 map recorre cada item de la lista ListaImagenOfertas y donde cada item
 se genera un SizedBox que va a contener cada imagen
 */
-final List<Widget> imageSliders = listaImagenOfertas
-    .asMap()
-    .entries
-    .map(
-      (entry) => GestureDetector(
-        onTap: () {
-          //Muestra el diálogo al presionar la imagen
-          CustomShowDialog(
-            imagenComida: entry.value, //URL de la imagen
-            nombreComida: 'Comida ${entry.key + 1}', //Nombre de comida ejemplo
-            descripcionComida:
-                'Descripción de comida ${entry.key + 1}', //Descripción ejemplo
-            precioComida: 10.99, //Precio ejemplo
-          ).dialogBuilder(context); //Llama al metodo dialogBuilder
-        },
-        child: SizedBox(
-          child: ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-            child: Image.network(entry.value, fit: BoxFit.cover, width: 500.0),
+    final List<Widget> imageSliders = listaImagenOfertas
+        .asMap()
+        .entries
+        .map(
+          (entry) => GestureDetector(
+            onTap: () {
+              //Muestra el diálogo al presionar la imagen
+              CustomCardDialog(
+                imagenComida: entry.value, //URL de la imagen
+                nombreComida:
+                    'Comida ${entry.key + 1}', //Nombre de comida ejemplo
+                descripcionComida:
+                    'Descripción de comida ${entry.key + 1}', //Descripción ejemplo
+                precioComida: 10.99, //Precio ejemplo
+              ).dialogBuilder(context); //Llama al metodo dialogBuilder
+            },
+            child: SizedBox(
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+                child:
+                    Image.network(entry.value, fit: BoxFit.cover, width: 500.0),
+              ),
+            ),
           ),
-        ),
-      ),
-    )
-    .toList();
+        )
+        .toList();
 
     return Column(
       children: [

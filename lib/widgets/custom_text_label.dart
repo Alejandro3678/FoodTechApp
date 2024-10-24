@@ -14,9 +14,9 @@ class EtiquetaTextoBase extends StatelessWidget {
     return Text(
       etiqueta,
       style: const TextStyle(
-        color: AppColors.primaryTextColor,
+        color: AppColors.negro,
         fontFamily: "Actor",
-        fontSize: 18,
+        fontSize: 18.0,
         fontWeight: FontWeight.bold,
       ),
     );

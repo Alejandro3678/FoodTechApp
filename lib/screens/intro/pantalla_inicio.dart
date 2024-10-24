@@ -32,8 +32,8 @@ class _PantallaInicioState extends State<PantallaInicio> {
     return Scaffold(
       body: Center(
         child: SizedBox(
-          width: 150,
-          height: 150,
+          width: 150.0,
+          height: 150.0,
           child: Image.asset(rutaImagen),
         ),
       ),

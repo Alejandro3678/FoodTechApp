@@ -150,8 +150,8 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
               : const Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Icons.warning, color: AppColors.rojo, size: 50),
-                    SizedBox(height: 16),
+                    Icon(Icons.warning, color: AppColors.rojo, size: 50.0),
+                    SizedBox(height: 16.0),
                     Text(
                       "Desafortunadamente, no disponemos de mesas en el horario elegido. "
                       "Por favor, selecciona otro horario o restaurante.",
@@ -206,7 +206,7 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
                 tituloPantalla: titulo,
                 rutaLogo: logo,
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 8.0),
               const Text(
                 'Revisar disponibilidad aquí',
                 style: TextStyle(
@@ -215,7 +215,7 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
                   color: AppColors.naranja,
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 16.0),
               const Text(
                 'Elige el restaurante de tu preferencia:',
                 style: TextStyle(
@@ -265,7 +265,7 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
                   }).toList(),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 16.0),
               const Text(
                 'Número de invitados:',
                 style: TextStyle(
@@ -277,7 +277,7 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
               ),
               const SizedBox(height: 5.0),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(5.0)),
                   border: Border.all(color: AppColors.naranja),
@@ -307,7 +307,7 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
                   }).toList(),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 16.0),
               const Text(
                 'Fecha:',
                 style: TextStyle(
@@ -323,7 +323,7 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 15),
+                          horizontal: 10.0, vertical: 15.0),
                       decoration: BoxDecoration(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(5.0)),
@@ -346,7 +346,7 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 16.0),
               const Text(
                 'Hora:',
                 style: TextStyle(
@@ -362,7 +362,7 @@ class _PantallaDisponibilidadState extends State<PantallaDisponibilidad> {
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 15),
+                          horizontal: 10.0, vertical: 15.0),
                       decoration: BoxDecoration(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(5.0)),
