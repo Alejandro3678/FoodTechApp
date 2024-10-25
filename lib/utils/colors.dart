@@ -16,6 +16,7 @@ class AppColors {
   static const Color naranja = Color(0xFFFF8B24);
   static const Color grisOscuro = Color(0xFF686D76);
   static const Color grisClaro = Color(0xFFe5e5e5);
+  static const Color grisEncendido = Colors.blueGrey;
   static const Color rojo = Color(0xFFDA0606);
 
   //Colores de fondo

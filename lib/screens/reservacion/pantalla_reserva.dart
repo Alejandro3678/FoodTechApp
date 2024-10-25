@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_tech_app/utils/colors.dart';
+import 'package:food_tech_app/widgets/custom_appbar_two.dart';
 
 class ReservationScreen extends StatefulWidget {
   const ReservationScreen({super.key});
@@ -88,16 +89,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.naranja,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          color: AppColors.negro,
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
+      appBar: const CustomAppbarTwo(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),

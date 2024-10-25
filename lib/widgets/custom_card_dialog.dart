@@ -93,7 +93,8 @@ class CustomCardDialog {
                         ),
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly
+                        ,
                         children: [
                           const Text(
                             "CANTIDAD",
@@ -115,7 +116,7 @@ class CustomCardDialog {
                             incrementadorComida.toString(),
                             style: const TextStyle(
                               color: AppColors.negro,
-                              fontSize: 15.0,
+                              fontSize: 14.0,
                               fontFamily: "Allerta",
                               fontWeight: FontWeight.bold,
                             ),
@@ -132,7 +133,7 @@ class CustomCardDialog {
                             "\$ ${(precioComida * incrementadorComida).toStringAsFixed(2)}",
                             style: const TextStyle(
                               color: AppColors.naranja,
-                              fontSize: 18.0,
+                              fontSize: 14.0,
                               fontFamily: "Allerta",
                             ),
                           ),
