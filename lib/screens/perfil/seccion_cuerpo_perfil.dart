@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:food_tech_app/screens/perfil/custom_label_text.dart';
+import 'package:food_tech_app/screens/perfil/pantalla_modificar_perfil.dart';
 import 'package:food_tech_app/utils/colors.dart';
 import 'package:food_tech_app/widgets/custom_seccion_encabezado.dart';
 
 //Clase donde construimos la seccion del cuerpo de la pantalla perfil.
 class SeccionCuerpoPerfil extends StatelessWidget {
-  final String nombresUsuario;
+  final String nombreUsuario;
   final String apellidosUsuario;
   final String correoUsuario;
   final String telefonoUsuario;
+  final String? dateBirthday;
+
+  const SeccionCuerpoPerfil({
+    required this.nombreUsuario,
+    required this.apellidosUsuario,
+    required this.correoUsuario,
+    required this.telefonoUsuario,
+    this.dateBirthday,
+    super.key,
+  });
+
   /*
   Definimos variables donde almacenamos el titulo y logo 
   del encabezado de la pantalla.
@@ -15,26 +28,17 @@ class SeccionCuerpoPerfil extends StatelessWidget {
   final String titulo = "PERFIL USUARIO";
   final String logo = "assets/img/logo_perfil.png";
 
-  const SeccionCuerpoPerfil(
-      {required this.nombresUsuario,
-      required this.apellidosUsuario,
-      required this.correoUsuario,
-      required this.telefonoUsuario,
-      super.key});
-
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
+    return SingleChildScrollView(
+      child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(
-            top: 10.0,
-            bottom: 10.0,
+          padding: const EdgeInsets.symmetric(
+            vertical: 5.0,
+            horizontal: 10.0,
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               /*
               Mandamos los valores de las variables definidas para los 
@@ -46,18 +50,16 @@ class SeccionCuerpoPerfil extends StatelessWidget {
               ),
               const SizedBox(height: 10.0),
               Container(
-                margin: const EdgeInsets.only(
-                  left: 15.0,
-                  right: 15.0,
-                  top: 10.0,
-                  bottom: 10.0,
+                margin: const EdgeInsets.symmetric(
+                  horizontal: 5.0,
+                  vertical: 10.0,
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
                   color: AppColors.grisOscuro,
                 ),
                 width: 500.0,
-                height: 700.0,
+                height: 600.0,
                 padding: const EdgeInsets.all(15.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,53 +79,12 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                       height: 5.0,
                     ),
                     const SizedBox(height: 15.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //Botón que navega a pantalla de modificar
-                      children: [
-                        Image.asset(
-                          "assets/img/icono_rico_app.png",
-                          width: 100.0,
-                          height: 100.0,
-                          fit: BoxFit.cover,
-                        ),
-                        TextButton.icon(
-                          onPressed: () {},
-                          style: const ButtonStyle(
-                            overlayColor: WidgetStatePropertyAll(
-                              AppColors.blanco,
-                            ),
-                          ),
-                          icon: const Icon(
-                            Icons.edit_sharp,
-                            color: AppColors.naranja,
-                            size: 25.0,
-                          ),
-                          label: const Text(
-                            "EDITAR",
-                            style: TextStyle(
-                              fontSize: 10.0,
-                              color: AppColors.naranja,
-                              fontFamily: "Actor",
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 10.0),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 15.0,
-                        right: 5.0,
-                      ),
-                      child: Text(
-                        "$nombresUsuario $apellidosUsuario".toUpperCase(),
-                        style: const TextStyle(
-                          fontSize: 15.0,
-                          color: AppColors.blanco,
-                          fontFamily: "Actor",
-                          fontWeight: FontWeight.bold,
-                        ),
+                    Center(
+                      child: Image.asset(
+                        "assets/img/icono_rico_app.png",
+                        width: 100.0,
+                        height: 100.0,
+                        fit: BoxFit.cover,
                       ),
                     ),
                     const SizedBox(height: 15.0),
@@ -132,71 +93,74 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            "Correo:",
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              color: AppColors.blanco,
-                              fontFamily: "Actor",
-                              fontWeight: FontWeight.bold,
-                            ),
+                          const CustomLabelText(
+                            texto: "NOMBRE:",
+                            negrita: FontWeight.bold,
                           ),
-                          Text(
-                            correoUsuario,
-                            style: const TextStyle(
-                              fontSize: 15.0,
-                              color: AppColors.blanco,
-                              fontFamily: "Actor",
-                            ),
+                          CustomLabelText(
+                            texto: "$nombreUsuario $apellidosUsuario"
+                                .toUpperCase(),
                           ),
                           const SizedBox(height: 10.0),
-                          const Text(
-                            "Teléfono:",
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              color: AppColors.blanco,
-                              fontFamily: "Actor",
-                              fontWeight: FontWeight.bold,
-                            ),
+                          const CustomLabelText(
+                            texto: "TELÉFONO:",
+                            negrita: FontWeight.bold,
                           ),
-                          Text(
-                            telefonoUsuario,
-                            style: const TextStyle(
-                              fontSize: 15.0,
-                              color: AppColors.blanco,
-                              fontFamily: "Actor",
-                            ),
+                          CustomLabelText(
+                            texto: telefonoUsuario,
+                          ),
+                          const SizedBox(height: 10.0),
+                          const CustomLabelText(
+                            texto: "FECHA CUMPLEAÑOS:",
+                            negrita: FontWeight.bold,
+                          ),
+                          CustomLabelText(
+                            texto: dateBirthday.toString(),
+                          ),
+                          const SizedBox(height: 10.0),
+                          const CustomLabelText(
+                            texto: "CORREO ELECTRÓNICO:",
+                            negrita: FontWeight.bold,
+                          ),
+                          CustomLabelText(
+                            texto: correoUsuario,
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 15.0),
+                    const SizedBox(height: 30.0),
                     const Divider(
                       color: AppColors.naranja,
                       thickness: 1.0,
                       height: 5.0,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
-                        top: 15.0,
-                        bottom: 15.0,
-                        left: 30.0,
-                        right: 30.0,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 30.0,
+                        vertical: 15.0,
                       ),
                       child: TextButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+                          //Dirige a pantalla perfil
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const PantallaModificarPerfil()),
+                          );
+                        },
                         style: const ButtonStyle(
                           overlayColor: WidgetStatePropertyAll(
                             AppColors.blanco,
                           ),
                         ),
                         icon: const Icon(
-                          Icons.mail,
+                          Icons.edit_sharp,
                           color: AppColors.naranja,
                           size: 25.0,
                         ),
                         label: const Text(
-                          "CAMBIAR CORREO",
+                          "EDITAR INFORMACIÓN",
                           style: TextStyle(
                             fontSize: 15.0,
                             color: AppColors.naranja,
@@ -211,11 +175,9 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                       height: 5.0,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
-                        top: 15.0,
-                        bottom: 15.0,
-                        left: 30.0,
-                        right: 30.0,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 30.0,
+                        vertical: 15.0,
                       ),
                       child: TextButton.icon(
                         onPressed: () {},
@@ -243,27 +205,6 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                       color: AppColors.naranja,
                       thickness: 1.0,
                       height: 5.0,
-                    ),
-                    const SizedBox(height: 25.0),
-                    Center(
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: const ButtonStyle(
-                          backgroundColor: WidgetStatePropertyAll(
-                            AppColors.naranja,
-                          ),
-                          elevation: WidgetStatePropertyAll(10),
-                        ),
-                        child: const Text(
-                          "GUARDAR",
-                          style: TextStyle(
-                            color: AppColors.blanco,
-                            fontFamily: "Actor",
-                            fontSize: 22.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
                     ),
                   ],
                 ),

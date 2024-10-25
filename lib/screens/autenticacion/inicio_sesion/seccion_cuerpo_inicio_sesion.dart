@@ -3,9 +3,18 @@ import 'package:food_tech_app/utils/colors.dart';
 import 'package:food_tech_app/widgets/custom_text_field.dart';
 import 'package:food_tech_app/widgets/custom_text_label.dart';
 
-class SeccionCuerpoInicioSesion extends StatelessWidget {
+class SeccionCuerpoInicioSesion extends StatefulWidget {
   const SeccionCuerpoInicioSesion({super.key});
 
+  @override
+  State<SeccionCuerpoInicioSesion> createState() =>
+      _SeccionCuerpoInicioSesionState();
+}
+
+class _SeccionCuerpoInicioSesionState extends State<SeccionCuerpoInicioSesion> {
+  //Controladores de Cajas de Texto
+  final TextEditingController _correoController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -19,8 +28,8 @@ class SeccionCuerpoInicioSesion extends StatelessWidget {
             width: 3.0,
           ),
         ),
-        child: const Padding(
-          padding: EdgeInsets.only(
+        child: Padding(
+          padding: const EdgeInsets.only(
             top: 20.0,
             left: 20.0,
             right: 20.0,
@@ -29,24 +38,27 @@ class SeccionCuerpoInicioSesion extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              EtiquetaTextoBase(etiqueta: "Usuario"),
-              CajaTextoBase(
-                textoHint: "Ingrese su usuario",
-                icono: Icons.person,
+              const EtiquetaTextoBase(etiqueta: "Correo Electrónico"),
+              CustomTextFormField(
+                controller: _correoController,
+                textoHint: "Ingrese su correo",
+                tipoTextInputType: TextInputType.emailAddress,
+                textoOculto: false,
               ),
-              SizedBox(height: 10.0),
-              EtiquetaTextoBase(etiqueta: "Contraseña"),
-              CajaTextoBase(
+              const SizedBox(height: 10.0),
+              const EtiquetaTextoBase(etiqueta: "Contraseña"),
+              CustomTextFormField(
+                controller: _passwordController,
                 textoHint: "Ingrese su contraseña",
-                icono: Icons.lock,
-                textoOculto: true,
+                tipoTextInputType: TextInputType.text,
+                textoOculto: false,
               ),
-              SizedBox(height: 30.0),
-              EnlaceRecuperarCredencial(),
-              SizedBox(height: 90.0),
-              BotonIniciarSesion(),
-              SizedBox(height: 30.0),
-              EnlaceRegistrarse(),
+              const SizedBox(height: 30.0),
+              const EnlaceRecuperarCredencial(),
+              const SizedBox(height: 90.0),
+              const BotonIniciarSesion(),
+              const SizedBox(height: 30.0),
+              const EnlaceRegistrarse(),
             ],
           ),
         ),
