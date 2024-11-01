@@ -43,10 +43,7 @@ class SeccionTitulosRegistro extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Navigator.pushReplacementNamed(
-                  context,
-                  "/inicioSesion",
-                );
+                Navigator.pop(context);
               },
               child: Text(
                 textoInicioSesion,

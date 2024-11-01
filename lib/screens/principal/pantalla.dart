@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_tech_app/firebase_services/auth_services.dart';
 import 'package:food_tech_app/screens/autenticacion/inicio_sesion/pantalla_inicio_sesion.dart';
 import 'package:food_tech_app/screens/categoria/pantalla_categoria.dart';
 import 'package:food_tech_app/screens/menu/pantalla_menu_dia.dart';
@@ -113,10 +114,10 @@ class _MainAppState extends State<MainApp> {
               ),
               onTap: () {
                 //Dirige a pantalla perfil
-                Navigator.push(
+                AuthServices().cerrarSesionUsuario();
+                Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const PantallaInicioSesion()),
+                  MaterialPageRoute(builder: (context) => const PantallaInicioSesion())
                 );
               },
             ),
