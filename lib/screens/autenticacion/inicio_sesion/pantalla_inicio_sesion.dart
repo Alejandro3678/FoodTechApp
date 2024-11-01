@@ -8,18 +8,20 @@ class PantallaInicioSesion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: EdgeInsets.all(15.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SeccionEncabezadoLogo(),
-              SeccionTitulosInicioSesion(),
-              SeccionCuerpoInicioSesion(),
-            ],
+    return SafeArea(
+      child: const Scaffold(
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Padding(
+            padding: EdgeInsets.all(15.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SeccionEncabezadoLogo(),
+                SeccionTitulosInicioSesion(),
+                SeccionCuerpoInicioSesion(),
+              ],
+            ),
           ),
         ),
       ),
