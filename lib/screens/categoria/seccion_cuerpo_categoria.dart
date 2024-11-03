@@ -1,4 +1,7 @@
+import "package:cloud_firestore/cloud_firestore.dart";
 import "package:flutter/material.dart";
+import "package:food_tech_app/firebase_services/firestore_services.dart";
+import "package:food_tech_app/screens/categoria/pantalla_productos_categorias.dart";
 import "package:food_tech_app/utils/colors.dart";
 import "package:food_tech_app/widgets/custom_seccion_encabezado.dart";
 
@@ -10,6 +13,8 @@ class SeccionCuerpoCategoria extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final firestoreService = FirestoreService();
+
     return SafeArea(
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -38,56 +43,57 @@ class SeccionCuerpoCategoria extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15.0),
-              GridView.count(
-                crossAxisCount: 2,
-                crossAxisSpacing: 20.0,
-                mainAxisSpacing: 20.0,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                children: [
-                  tarjetaCategoria(
-                    "Entradas",
-                    "https://i.pinimg.com/originals/90/af/77/90af7728cbb3e2a85c5d41911764d3a3.jpg",
-                    () {
-                      print("IR Entradas");
+              StreamBuilder<QuerySnapshot>(
+                stream: firestoreService.readCategoryData(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator(
+                        color: AppColors.naranja);
+                  } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                    return const Text(
+                      "No hay Categorias disponibles",
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: AppColors.negro,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    );
+                  }
+                  final categorias = snapshot.data!.docs;
+
+                  return GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: categorias.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 20.0,
+                            mainAxisSpacing: 20.0),
+                    itemBuilder: (context, index) {
+                      var categoria = categorias[index];
+                      String idCategoria = categoria.id;
+                      String nombreCategoria = categoria["NombreCategoria"];
+                      String imagenUrl = categoria["ImagenUrl"];
+
+                      return tarjetaCategoria(
+                        nombreCategoria,
+                        imagenUrl,
+                        () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PantallaProductosCategorias(
+                                idCategoria: idCategoria,
+                                nombreCategoria: nombreCategoria,
+                              ),
+                            ),
+                          );
+                        },
+                      );
                     },
-                  ),
-                  tarjetaCategoria(
-                    "Platos principales",
-                    "https://th.bing.com/th/id/OIP.lSfL-rYjyklxqXOfO6FL1wHaE8?rs=1&pid=ImgDetMain",
-                    () {
-                      print("IR Platos principales");
-                    },
-                  ),
-                  tarjetaCategoria(
-                    "Postres",
-                    "https://th.bing.com/th/id/OIP.HHGO4oFm2gV25Kxvj6nQGwHaFd?rs=1&pid=ImgDetMain",
-                    () {
-                      print("IR Postres");
-                    },
-                  ),
-                  tarjetaCategoria(
-                    "Bebidas",
-                    "https://www.losvinos.com.ar/wp-content/uploads/2020/05/Bebidas-refrescantes-naturales-scaled.jpg",
-                    () {
-                      print("IR Bebidas");
-                    },
-                  ),
-                  tarjetaCategoria(
-                    "Sopas",
-                    "https://th.bing.com/th/id/OIP.1xctuW-OG7tWZ7lbVfpOawHaG-?rs=1&pid=ImgDetMain",
-                    () {
-                      print("IR Sopas");
-                    },
-                  ),
-                  tarjetaCategoria(
-                    "Extras",
-                    "https://th.bing.com/th/id/OIP.mMR4cyRGn_SRHPAtba8ppAHaE8?rs=1&pid=ImgDetMain",
-                    () {
-                      print("IR Extras");
-                    },
-                  ),
-                ],
+                  );
+                },
               ),
             ],
           ),

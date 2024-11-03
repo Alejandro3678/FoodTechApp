@@ -1,62 +1,60 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:food_tech_app/firebase_services/firestore_services.dart';
 import 'package:food_tech_app/utils/colors.dart';
+import 'package:food_tech_app/widgets/custom_appbar_two.dart';
 import 'package:food_tech_app/widgets/custom_card_productos_categorias.dart';
-import 'package:food_tech_app/widgets/custom_seccion_encabezado.dart';
 
-//Clase donde construimos la seccion del cuerpo de la pantalla menú.
-class SeccionCuerpoMenu extends StatefulWidget {
-  const SeccionCuerpoMenu({super.key});
+class PantallaProductosCategorias extends StatelessWidget {
+  final String idCategoria;
+  final String nombreCategoria;
 
-  @override
-  State<SeccionCuerpoMenu> createState() => _SeccionCuerpoMenuState();
-}
-
-class _SeccionCuerpoMenuState extends State<SeccionCuerpoMenu> {
-  /*
-  Definimos variables donde almacenamos el titulo y logo 
-  del encabezado de la pantalla.
-  */
-  final String titulo = "MENÚ DE COMIDAS";
-
-  final String logo = "assets/img/logo_menu.png";
+  const PantallaProductosCategorias({
+    super.key,
+    required this.idCategoria,
+    required this.nombreCategoria,
+  });
 
   @override
   Widget build(BuildContext context) {
     final firestoreService = FirestoreService();
 
-    return SafeArea(
-      child: SingleChildScrollView(
+    return Scaffold(
+      appBar: CustomAppbarTwo(),
+      body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.symmetric(
+            vertical: 10.0,
+            horizontal: 15.0,
+          ),
           child: Column(
             children: [
-              /*
-              Mandamos los valores de las variables definidas para los 
-              parametros requeridos de la clase SeccionEncabezado.
-              */
-              SeccionEncabezado(
-                tituloPantalla: titulo,
-                rutaLogo: logo,
+              Text(
+                nombreCategoria,
+                style: const TextStyle(
+                  fontSize: 22.0,
+                  color: AppColors.naranja,
+                  fontFamily: "Allerta",
+                  fontWeight: FontWeight.bold,
+                ),
               ),
+              const SizedBox(height: 15.0),
               StreamBuilder<QuerySnapshot>(
-                stream: firestoreService.readAllProducts(),
+                stream: firestoreService.readProductsByCategory(idCategoria),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.naranja,
-                      ),
-                    );
+                        child: CircularProgressIndicator(
+                      color: AppColors.naranja,
+                    ));
                   } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                     return const Center(
                       child: Text(
-                        "No hay productos disponibles.",
+                        "No hay productos disponibles en esta categoría.",
                         style: TextStyle(
+                          fontSize: 14.0,
                           color: AppColors.negro,
-                          fontSize: 18.0,
                           fontFamily: "Actor",
                           fontStyle: FontStyle.italic,
                         ),
@@ -67,7 +65,8 @@ class _SeccionCuerpoMenuState extends State<SeccionCuerpoMenu> {
                   final productos = snapshot.data!.docs;
 
                   return ListView.builder(
-                    shrinkWrap: true,
+                    shrinkWrap:
+                        true, 
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: productos.length,
                     itemBuilder: (context, index) {

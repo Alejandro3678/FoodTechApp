@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "4987066063",
+    "project_id": "dbrickoapp",
+    "storage_bucket": "dbrickoapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:4987066063:android:0c8ed2ae3be16d8a3849ba",
+        "android_client_info": {
+          "package_name": "com.rikoapp.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXrFCLEym_IjJeez7DnschiLjUsC-J0TQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
