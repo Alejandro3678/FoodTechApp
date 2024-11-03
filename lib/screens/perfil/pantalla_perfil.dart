@@ -9,13 +9,7 @@ class PantallaPerfil extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: CustomAppbarTwo(),
-      body: SeccionCuerpoPerfil(
-        nombreUsuario: "Jonathan Josué",
-        apellidosUsuario: "Dominguez Gómez",
-        correoUsuario: "jonathanjosuedominguezgomez@gmail.com",
-        telefonoUsuario: "7513-2739",
-        dateBirthday: "07/10/2000",
-      ),
+      body: SeccionCuerpoPerfil(),
     );
   }
 }

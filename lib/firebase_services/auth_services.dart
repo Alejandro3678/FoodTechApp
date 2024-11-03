@@ -37,7 +37,7 @@ class AuthServices {
         return "Ese correo ya está en uso";
       }
     } catch (e) {
-      return print("ERROR OCURRIDO, $e");
+      return "ERROR OCURRIDO, $e";
       
     }
   }

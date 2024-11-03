@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:food_tech_app/widgets/custom_card_pedidos.dart';
+import 'package:food_tech_app/firebase_services/auth_services.dart';
+import 'package:food_tech_app/firebase_services/firestore_services.dart';
+import 'package:food_tech_app/generar_pdf/generar_pdf.dart';
+import 'package:food_tech_app/generar_pdf/permisos_almacenamiento.dart';
+import 'package:food_tech_app/screens/funcionalidad_carrito/cart_provider.dart';
+import 'package:food_tech_app/utils/colors.dart';
+import 'package:food_tech_app/widgets/custom_card_productos_pedidos.dart';
 import 'package:food_tech_app/widgets/custom_seccion_encabezado.dart';
+import 'package:food_tech_app/widgets/show_snackbar.dart';
+import 'package:printing/printing.dart';
+import 'package:provider/provider.dart';
 
 //Clase donde construimos la seccion del cuerpo de la pantalla menú.
 class SeccionCuerpoPedido extends StatelessWidget {
-  /*
-  Definimos variables donde almacenamos el titulo y logo 
-  del encabezado de la pantalla.
-  */
   final String titulo = "Pedidos realizados";
   final String logo = "assets/img/logo_pedidos.png";
-
   const SeccionCuerpoPedido({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context);
+    final cartItems = cartProvider.items;
+
     return SafeArea(
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -22,53 +29,205 @@ class SeccionCuerpoPedido extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              /*
-              Mandamos los valores de las variables definidas para los 
-              parametros requeridos de la clase SeccionEncabezado.
-              */
               SeccionEncabezado(
                 tituloPantalla: titulo,
                 rutaLogo: logo,
               ),
-              /*
-              Llamamos la clase Tarjetas y le colocamos valores de ejemplo a 
-              los parametros requeridos.
-              */
-              const TarjetasPedidos(
-                imagenComida:
-                    "https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80",
-                tituloComida: "HAMBURGUESA",
-                descripcionComida: "Papas, carne de res, ceboola",
-                precioComida: 10.50,
+              SizedBox(height: 10.0),
+              Divider(color: AppColors.naranja, thickness: 2.0),
+              Text(
+                "DETALLE DE TU ORDEN:",
+                style: TextStyle(
+                  color: AppColors.grisOscuro,
+                  fontFamily: "Actor",
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 3.5,
+                ),
               ),
-              const TarjetasPedidos(
-                imagenComida:
-                    "https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80",
-                tituloComida: "Coca Cola Lata",
-                descripcionComida: "Coca-Cola Lata 354mL",
-                precioComida: 1.55,
-              ),
-              const TarjetasPedidos(
-                imagenComida:
-                    "https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80",
-                tituloComida: "Coca Cola Lata",
-                descripcionComida: "Coca-Cola Lata 354mL",
-                precioComida: 1.55,
-              ),
-              const TarjetasPedidos(
-                imagenComida:
-                    "https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80",
-                tituloComida: "Botella de Agua",
-                descripcionComida: "Botella de agua 600mL",
-                precioComida: 1.50,
-              ),
-              const TarjetasPedidos(
-                imagenComida:
-                    "https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80",
-                tituloComida: "Coca Cola 1.25L",
-                descripcionComida: "Coca-Cola Botella 1.25 L",
-                precioComida: 1.75,
-              ),
+              Divider(color: AppColors.naranja, thickness: 2.0),
+              cartItems.isEmpty
+                  ? Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Text(
+                        "Todavía no hay productos agregados en el carrito.",
+                        style: TextStyle(
+                          color: AppColors.negro,
+                          fontSize: 18.0,
+                          fontFamily: "Actor",
+                          fontStyle: FontStyle.italic,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    )
+                  : ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: cartItems.length,
+                      itemBuilder: (context, index) {
+                        final item = cartItems[index];
+                        return TarjetaProductosPedidos(
+                          imagenComida: item.imagenComida,
+                          tituloComida: item.tituloComida,
+                          descripcionComida: item.descripcionComida,
+                          precioComida: item.precioComida,
+                          cantidad: item.cantidad,
+                          onDelete: () {
+                            cartProvider.removeItem(item);
+                          },
+                          onQuantityChanged: (newQuantity) {
+                            cartProvider.updateQuantity(item, newQuantity);
+                          },
+                        );
+                      },
+                    ),
+              Divider(color: AppColors.naranja, height: 70.0, thickness: 2.0),
+              if (cartItems.isNotEmpty) ...[
+                Center(
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "TOTAL",
+                            style: TextStyle(
+                              color: AppColors.negro,
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(width: 10.0),
+                          Text(
+                            "\$ ${cartProvider.total.toStringAsFixed(2)}",
+                            style: TextStyle(
+                              color: AppColors.naranja,
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 5.0),
+                      ElevatedButton(
+                        style: const ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(
+                            AppColors.buttonBackgroundColor,
+                          ),
+                          elevation: MaterialStatePropertyAll(5.0),
+                        ),
+                        onPressed: () async {
+                          // Solicitar permiso de almacenamiento antes de procesar el pago
+                          await requestStoragePermission();
+
+                          // Mostrar diálogo de confirmación
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: Text("Confirmar Pedido"),
+                                content: Text(
+                                    "¿Está seguro de que desea procesar el pago?"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context)
+                                          .pop(); // Cerrar el diálogo
+                                    },
+                                    child: Text("Cancelar"),
+                                  ),
+                                  TextButton(
+                                    onPressed: () async {
+                                      Navigator.of(context)
+                                          .pop(); // Cerrar el diálogo
+
+                                      final userId =
+                                          AuthServices().auth.currentUser!.uid;
+
+                                      // Obtén los detalles del usuario (por ejemplo, nombre y apellido)
+                                      final userDoc = await FirestoreService()
+                                          .getUserData(userId);
+                                      final userName = userDoc[
+                                          'Nombres']; // Ajusta según tu estructura de Firestore
+                                      final userSurname = userDoc[
+                                          'Apellidos']; // Ajusta según tu estructura de Firestore
+
+                                      await FirestoreService().createOrder(
+                                        userId: userId,
+                                        products: cartProvider.items,
+                                        total: cartProvider.total,
+                                        estado: false,
+                                        fechaPedido: DateTime.now(),
+                                      );
+
+                                      // Generar el PDF y guardar los bytes
+                                      final pdfBytes = await generatePdf(
+                                        cartProvider.items,
+                                        cartProvider.total,
+                                        userName,
+                                        userSurname,
+                                      );
+
+                                      // Opción para descargar el PDF
+                                      await Printing.sharePdf(
+                                          bytes: pdfBytes,
+                                          filename:
+                                              'pedido_${DateTime.now().millisecondsSinceEpoch}.pdf');
+
+                                      //Limpiar interfaz carrito
+                                      cartProvider.clearCart();
+
+                                      showSnackBar(
+                                          context,
+                                          "¡Pedido realizado con éxito!",
+                                          Colors.green);
+                                    },
+                                    child: Text("Confirmar"),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                        child: const Text(
+                          "PROCESAR PAGO",
+                          style: TextStyle(
+                            color: AppColors.secondTextColor,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Actor",
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 15.0),
+                      ElevatedButton(
+                        style: const ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(
+                            AppColors.buttonBackgroundColor,
+                          ),
+                          elevation: MaterialStatePropertyAll(5.0),
+                        ),
+                        onPressed: () {
+                          cartProvider.clearCart();
+                        },
+                        child: const Text(
+                          "LIMPIAR CARRITO",
+                          style: TextStyle(
+                            color: AppColors.secondTextColor,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Actor",
+                          ),
+                        ),
+                      ),
+                      Divider(
+                          color: AppColors.naranja,
+                          height: 70.0,
+                          thickness: 2.0),
+                    ],
+                  ),
+                ),
+              ],
             ],
           ),
         ),

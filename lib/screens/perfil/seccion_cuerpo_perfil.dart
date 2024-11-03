@@ -1,32 +1,65 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:food_tech_app/firebase_services/auth_services.dart';
+import 'package:food_tech_app/firebase_services/firestore_services.dart';
 import 'package:food_tech_app/screens/perfil/custom_label_text.dart';
 import 'package:food_tech_app/screens/perfil/pantalla_modificar_perfil.dart';
 import 'package:food_tech_app/utils/colors.dart';
 import 'package:food_tech_app/widgets/custom_seccion_encabezado.dart';
+import 'package:food_tech_app/widgets/show_snackbar.dart';
 
 //Clase donde construimos la seccion del cuerpo de la pantalla perfil.
-class SeccionCuerpoPerfil extends StatelessWidget {
-  final String nombreUsuario;
-  final String apellidosUsuario;
-  final String correoUsuario;
-  final String telefonoUsuario;
-  final String? dateBirthday;
-
+class SeccionCuerpoPerfil extends StatefulWidget {
   const SeccionCuerpoPerfil({
-    required this.nombreUsuario,
-    required this.apellidosUsuario,
-    required this.correoUsuario,
-    required this.telefonoUsuario,
-    this.dateBirthday,
     super.key,
   });
+
+  @override
+  State<SeccionCuerpoPerfil> createState() => _SeccionCuerpoPerfilState();
+}
+
+class _SeccionCuerpoPerfilState extends State<SeccionCuerpoPerfil> {
+  final FirestoreService _perfil = FirestoreService();
+  String nombresUsuario = "";
+  String apellidosUsuario = "";
+  String correoUsuario = "";
+  String telefonoUsuario = "";
 
   /*
   Definimos variables donde almacenamos el titulo y logo 
   del encabezado de la pantalla.
   */
   final String titulo = "PERFIL USUARIO";
+
   final String logo = "assets/img/logo_perfil.png";
+
+  @override
+  void initState() {
+    super.initState();
+    //Obtenemos el ID del usuario autenticado
+    String userId = AuthServices().auth.currentUser!.uid;
+    cargarDatosUsuario(userId);
+  }
+
+  Future<void> cargarDatosUsuario(String userId) async {
+    try {
+      DocumentSnapshot userDoc = await _perfil.getUserData(userId);
+      if (userDoc.exists) {
+        setState(() {
+          nombresUsuario = userDoc["Nombres"];
+          apellidosUsuario = userDoc["Apellidos"];
+          telefonoUsuario = userDoc["Telefono"];
+          correoUsuario = userDoc["Correo"];
+        });
+      } else {
+        showSnackBar(
+            context, "El documento del usuario no existe", AppColors.rojo);
+      }
+    } catch (e) {
+      showSnackBar(
+          context, "Error, al cargar los datos del usuario $e", AppColors.rojo);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,13 +127,18 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const CustomLabelText(
-                            texto: "NOMBRE:",
+                            texto: "NOMBRES:",
                             negrita: FontWeight.bold,
                           ),
                           CustomLabelText(
-                            texto: "$nombreUsuario $apellidosUsuario"
-                                .toUpperCase(),
+                              texto: nombresUsuario.toString().toUpperCase()),
+                          const SizedBox(height: 10.0),
+                          const CustomLabelText(
+                            texto: "APELLIDOS:",
+                            negrita: FontWeight.bold,
                           ),
+                          CustomLabelText(
+                              texto: apellidosUsuario.toString().toUpperCase()),
                           const SizedBox(height: 10.0),
                           const CustomLabelText(
                             texto: "TELÉFONO:",
@@ -108,14 +146,6 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                           ),
                           CustomLabelText(
                             texto: telefonoUsuario,
-                          ),
-                          const SizedBox(height: 10.0),
-                          const CustomLabelText(
-                            texto: "FECHA CUMPLEAÑOS:",
-                            negrita: FontWeight.bold,
-                          ),
-                          CustomLabelText(
-                            texto: dateBirthday.toString(),
                           ),
                           const SizedBox(height: 10.0),
                           const CustomLabelText(
@@ -141,13 +171,21 @@ class SeccionCuerpoPerfil extends StatelessWidget {
                       ),
                       child: TextButton.icon(
                         onPressed: () {
-                          //Dirige a pantalla perfil
+                          //Dirige a pantalla modificar perfil
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    const PantallaModificarPerfil()),
-                          );
+                              builder: (context) => PantallaModificarPerfil(
+                                userId: AuthServices().auth.currentUser!.uid,
+                                nombresActual: nombresUsuario,
+                                apellidosActual: apellidosUsuario,
+                                telefonoActual: telefonoUsuario,
+                              ),
+                            ),
+                          ).then((_) {
+                            cargarDatosUsuario(
+                                AuthServices().auth.currentUser!.uid);
+                          });
                         },
                         style: const ButtonStyle(
                           overlayColor: WidgetStatePropertyAll(

@@ -1,14 +1,21 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:food_tech_app/firebase_options.dart';
+import 'package:food_tech_app/screens/funcionalidad_carrito/cart_provider.dart';
 import 'package:food_tech_app/screens/splash/splash_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(RicoApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => CartProvider(),
+      child: RicoApp(),
+    ),
+  );
 }
 
 class RicoApp extends StatefulWidget {

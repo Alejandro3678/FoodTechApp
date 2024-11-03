@@ -93,8 +93,7 @@ class CustomCardDialog {
                         ),
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly
-                        ,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           const Text(
                             "CANTIDAD",
@@ -149,6 +148,7 @@ class CustomCardDialog {
                             elevation: WidgetStatePropertyAll(5.0),
                           ),
                           onPressed: () {
+
                             /*
                             Una vez que se presiona el boton añadir al carrito
                             se cierra y muestra la pantalla principal del menú y

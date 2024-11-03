@@ -5,7 +5,7 @@ import 'package:food_tech_app/screens/categoria/pantalla_categoria.dart';
 import 'package:food_tech_app/screens/menu/pantalla_menu_dia.dart';
 import 'package:food_tech_app/screens/ofertas/pantalla_ofertas.dart';
 import 'package:food_tech_app/screens/perfil/pantalla_perfil.dart';
-import 'package:food_tech_app/screens/reservacion/pantalla_disponibilidad.dart';
+import 'package:food_tech_app/screens/reservacion/pantalla_disponibilidad/pantalla_disponibilidad.dart';
 import 'package:food_tech_app/utils/colors.dart';
 import 'package:food_tech_app/widgets/custom_appbar.dart';
 
